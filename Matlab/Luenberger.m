@@ -6,20 +6,21 @@
 clc
 clear 
 
-syms a22 a23 a24 a42 a43 a44 b21 b31 ... 
-     xw xw_dot thb thb_dot 
-  
+
 x = [ xw; xw_dot; thb; thb_dot ];
 y_acc = thb;
 y_nacc = xw;
 y = [y_acc ; y_nacc]; 
 
-A = [ 0   1   0   0 ;
-      0  a22 a23 a24;
-      0   0   0   1 ;
-      0  a42 a43 a44 ];
-  
-B = [ 0; b21; 0; b31 ]; % B without disturbance
+
+A    = [0                  1                0              0;
+        0                  -0.7737853734e3 -0.6573516819e1 0.1624949284e2;
+        0                  0                0              1;
+        0                  0.3313238430e4   0.6307193805e2 -0.6957800702e2;];
+B    = [0; 
+        0.3659795684e2; 
+        0; 
+        -0.1567072230e3];
 
 C = [ 1   0   0   0  ;  % extended C
       0   0   1   0  ];
@@ -28,11 +29,10 @@ C_acc  = [ 0   0   1   0  ]; % accurate C
 
 C_nacc = [ 1   0   0   0  ]; % non-accurate C
   
-T_inv = [ 0   0   1   0 ; % accurate part of C
-          0   1   0   0 ; % V ...
-          1   0   0   0 ;
-          0   0   0   1  ];
-T = T_inv^(-1);
+T = inv([ 0   0   1   0 ; % accurate part of C
+          1   0   0   0 ; % V ...
+          0   1   0   0 ;
+          0   0   0   1  ]);
   
   
 A_t  = T^(-1)*A*T; 
@@ -59,12 +59,6 @@ Cx = C_tnacc(1,2:4);
 
 %% Luenberger DESIGN
 
-% data 
-data = solve([a22 == -0.7737853734e3; a23 == -0.6573516819e1;
-              a24 == 0.1624949284e2;  a42 ==  0.3313238430e4;
-              a43 == 0.6307193805e2;  a44 == -0.6957800702e2; 
-              b21 == 0.3659795684e2;  b31 == -0.1567072230e3], a22, a23, a24, a42, a43, a44, b21, b31);
-
 % Poles
 s1 = tf('s');
 TF_closed = (0.7368846007e4 * s1 + 0.4129875744e5 + 0.8679012356e1 * s1 ^ 2) / ...
@@ -74,17 +68,17 @@ afPoles = [poles; -2];
 
 % Full-order Luenberger
 
-L_full = ( place( subs(A, data)', C', afPoles ) )'; %what other pole should we introduce??
+%L_full = ( place( A', C', afPoles ) )'; %what other pole should we introduce??
 
 % Reduced-order Luenberger
 
-AA = subs(Axx, data);
+AA = Axx;
 CC = [Ayx; Cx];
 
-L = ( place(AA', CC', afpoles ) )'; %what other pole should we introduce??
+L = ( place( AA', CC', poles ) )'; 
 
-L_acc  = L(1:4,1);
-L_nacc = L(1:4,2); 
+L_acc  = L(1:3,1);
+L_nacc = L(1:3,2); 
 
 M1 = Axx - L_acc*Ayx - L_nacc*Cx;
 M2 = Bx - L_acc*By;
@@ -94,5 +88,13 @@ M5 = L_acc;
 M6 = T(1:4,1);
 M7 = T(1:4,2:4);
 
+% PID values
+p_1 = -843.40;
+p_2 = -5.64;
+p_3 = 5.68;
+pp_3 = -3;
+gain_G_s = -156.71;
 
-
+kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
+kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
+kD = (p_3 - pp_3)/gain_G_s;
