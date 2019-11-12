@@ -7,7 +7,7 @@
 % basic parameters
 % fSamplingPeriod	= should be already loaded in the workspace
 iCommunicationTime	= 30;		% [sec]
-iCOMPort			= 'Com3';
+iCOMPort			= 'COM3';
 fPlotsUpdatesPeriod	= 1;		% [sec]
 %
 % advanced parameters

@@ -12,7 +12,7 @@ load('GyroBias.mat');
 fSamplingPeriod			= 0.005; % note: 0.005 is the fastest sampling time with the default mpu5060 library settings
 
 % load the PID values
-kP = -69.6802;
-kI = -390.4363;
-kD = -0.1302;
+kP = -47.02301440;
+kI = -263.5408670;
+kD = -0.5538361401e-1;
 
