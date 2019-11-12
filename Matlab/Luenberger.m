@@ -3,9 +3,10 @@
 % ref. p 27, LabBook
 %
 
-clc
-clear 
+clear all
+close all
 
+syms xw xw_dot thb thb_dot 
 
 x = [ xw; xw_dot; thb; thb_dot ];
 y_acc = thb;
