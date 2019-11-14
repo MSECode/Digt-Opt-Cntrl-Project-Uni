@@ -94,3 +94,17 @@ B_in = [0;
 % that can be used only with a SISO system
 p_4_acker = [-849 -3 -6 -5];
 K_ack = acker(A_in, B_in, p_4_acker);
+
+figure(1)
+plot( u.time, u.signals.values, '-m', 'LineWidth',2);
+grid on
+legend('input signal');
+title('measurement of the input'); xlabel('time (sec)'); ylabel('Volt');
+
+figure(2)
+plot( x.time, x.signals.values, 'LineWidth',2 );
+grid on
+legend('x_w', 'x_w_{dot}', '\theta_b', '\theta_b_{dot}');
+title('measurement of the wheel position'); xlabel('time (sec)'); ylabel('state signal');
+
+

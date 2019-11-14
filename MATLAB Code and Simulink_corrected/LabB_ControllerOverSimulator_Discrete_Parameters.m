@@ -5,7 +5,7 @@ clc;
 % select the sampling time
 fSamplingPeriod = 0.005;
 
-Kd = [-8.1792  -49.1223  -71.4928  -11.5909];
+Kd = [-59.7800  -63.0593  -90.6142  -14.8524];
  
 
 

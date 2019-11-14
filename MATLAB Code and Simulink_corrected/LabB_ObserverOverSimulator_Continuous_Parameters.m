@@ -102,3 +102,31 @@ gain_G_s = -156.71;
 kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
 kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
 kD = (p_3 - pp_3)/gain_G_s;
+
+%% Error computation
+
+% Error wrt theta_full and reduced
+theta_norm = theta_b.signals.values(:,1);
+theta_full = theta_b.signals.values(:,2);
+theta_red  = theta_b.signals.values(:,3);
+err_full_theta = max(abs(theta_norm - theta_full));
+err_red_theta  = max(abs(theta_norm - theta_red));
+
+% Error wrt position full and reduced
+x_w_norm = x_w.signals.values(:,1);
+x_w_full = x_w.signals.values(:,2);
+x_w_red  = x_w.signals.values(:,3);
+err_full_pos = max(abs(x_w_norm - x_w_full));
+err_red_pos  = max(abs(x_w_norm - x_w_red));
+
+%% Discretization of the system
+
+fSamplingPeriod = 0.01;
+cont_sys = ss(A, B, C, D);
+discr_sys = c2d(cont_sys, fSamplingPeriod, 'tustin');
+
+
+
+
+
+
