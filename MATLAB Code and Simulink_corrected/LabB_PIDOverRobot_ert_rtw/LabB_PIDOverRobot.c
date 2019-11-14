@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.573
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Tue Nov 12 20:29:43 2019
+ * C/C++ source code generated on : Wed Nov 13 21:51:01 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -377,10 +377,10 @@ void LabB_PIDOverRobot_initialize(void)
   LabB_PIDOverRobot_M->Timing.stepSize0 = 0.005;
 
   /* External mode info */
-  LabB_PIDOverRobot_M->Sizes.checksums[0] = (3781078481U);
-  LabB_PIDOverRobot_M->Sizes.checksums[1] = (1199715857U);
-  LabB_PIDOverRobot_M->Sizes.checksums[2] = (593474208U);
-  LabB_PIDOverRobot_M->Sizes.checksums[3] = (4107445602U);
+  LabB_PIDOverRobot_M->Sizes.checksums[0] = (2780981141U);
+  LabB_PIDOverRobot_M->Sizes.checksums[1] = (4048871963U);
+  LabB_PIDOverRobot_M->Sizes.checksums[2] = (1732226504U);
+  LabB_PIDOverRobot_M->Sizes.checksums[3] = (3506547639U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

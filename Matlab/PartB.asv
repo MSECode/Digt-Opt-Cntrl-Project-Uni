@@ -92,5 +92,5 @@ B_in = [0;
 
 % Gain matrix calculated with acker function 
 % that can be used only with a SISO system
-p_4_acker = [-849 -3 -6 -5];
+p_4_acker = [-5 -849 -6 -3];
 K_ack = acker(A_in, B_in, p_4_acker);
