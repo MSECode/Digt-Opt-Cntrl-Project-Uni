@@ -21,6 +21,9 @@ K_p = -200;
 K_i = -500;
 K_d = -0.0868;
 
+
+
+
 bode(TF)
 C_s = pid(K_p, K_i, K_d);
 closed_loop_tf = (C_s*TF)/(1 + C_s*TF);
