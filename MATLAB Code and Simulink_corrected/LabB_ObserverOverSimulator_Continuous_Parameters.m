@@ -27,7 +27,8 @@ B    = [0;
 C = [ 1   0   0   0  ;  % extended C
       0   0   1   0  ];
   
-D = [ 0 ];
+D = [ 0;
+      0 ];
 
 C_acc  = [ 0   0   1   0  ]; % accurate C
 
