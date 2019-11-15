@@ -120,11 +120,7 @@ x_w_red  = x_w.signals.values(:,3);
 err_full_pos = max(abs(x_w_norm - x_w_full));
 err_red_pos  = max(abs(x_w_norm - x_w_red));
 
-%% Discretization of the system
 
-fSamplingPeriod = 0.01;
-cont_sys = ss(A, B, C, D);
-discr_sys = c2d(cont_sys, fSamplingPeriod, 'tustin');
 
 
 
