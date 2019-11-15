@@ -1,0 +1,11 @@
+rtGetInf.o: \
+ C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rtGetInf.c \
+ C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rtGetInf.h \
+ C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rtwtypes.h \
+ C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rt_nonfinite.h
+
+C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rtGetInf.h:
+
+C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rtwtypes.h:
+
+C:/Users/jlosi/OneDrive/DOCUME~1/GitHub/DIGITA~2/MATLAB~1/LabB_CheckCommunications_ert_rtw/rt_nonfinite.h:
