@@ -10,8 +10,8 @@ close all
 %syms xw xw_dot thb thb_dot
 
 %x = [ xw; xw_dot; thb; thb_dot ];
-%y_acc = thb;
-%y_nacc = xw;
+%y_acc = xw;
+%y_nacc = thb;
 %y = [y_acc ; y_nacc]; 
 
 
@@ -30,12 +30,12 @@ C = [ 1   0   0   0  ;  % extended C
 D = [ 0;
       0 ];
 
-C_acc  = [ 0   0   1   0  ]; % accurate C
+C_acc  = [ 1   0   0   0  ]; % accurate C
 
-C_nacc = [ 1   0   0   0  ]; % non-accurate C
+C_nacc = [ 0   0   1   0  ]; % non-accurate C
   
-T = inv([ 0   0   1   0 ; % accurate part of C
-          1   0   0   0 ; % V ...
+T = inv([ 1   0   0   0 ; % accurate part of C
+          0   0   1   0 ; % V ...
           0   1   0   0 ;
           0   0   0   1  ]);
   
