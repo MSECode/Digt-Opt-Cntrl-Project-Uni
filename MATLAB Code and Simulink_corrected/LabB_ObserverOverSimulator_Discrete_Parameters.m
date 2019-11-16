@@ -30,7 +30,7 @@ D = [ 0 ;
 fSamplingPeriod = 0.01;
 
 cont_sys = ss(A, B, C, D);
-discr_sys = c2d(cont_sys, fSamplingPeriod, 'tustin');
+discr_sys = c2d(cont_sys, fSamplingPeriod, 'zoh');
 
 [Ad, Bd, Cd, Dd] = ssdata(discr_sys);
 
@@ -105,7 +105,7 @@ Md5 = L_acc;
 Md6 = T(1:4,1);
 Md7 = T(1:4,2:4);
 
-%% PID values: TO-DO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%% PID values and Kd
 
 p_1 = -843.40;
 p_2 = -5.64;
@@ -117,4 +117,4 @@ kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
 kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
 kD = (p_3 - pp_3)/gain_G_s;
 
-
+Kd = place(Ad, Bd, afPoles);
