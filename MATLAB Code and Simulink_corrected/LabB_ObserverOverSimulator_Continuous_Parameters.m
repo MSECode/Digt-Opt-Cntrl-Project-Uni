@@ -7,6 +7,17 @@ clc
 clear
 close all
 
+% PID values
+p_1 = -843.40;
+p_2 = -5.64;
+p_3 = 5.68;
+pp_3 = -3;
+gain_G_s = -156.71;
+
+kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
+kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
+kD = (p_3 - pp_3)/gain_G_s;
+
 %syms xw xw_dot thb thb_dot
 
 %x = [ xw; xw_dot; thb; thb_dot ];
@@ -73,7 +84,7 @@ afPoles = [poles; -5];
 
 % Full-order Luenberger
 
-L = ( place( A', C', afPoles ) )'; %what other pole should we introduce??
+L = ( place( A', C', afPoles ) )';
 
 % Reduced-order Luenberger
 
@@ -92,17 +103,6 @@ M4 = L_nacc;
 M5 = L_acc;
 M6 = T(1:4,1);
 M7 = T(1:4,2:4);
-
-% PID values
-p_1 = -843.40;
-p_2 = -5.64;
-p_3 = 5.68;
-pp_3 = -3;
-gain_G_s = -156.71;
-
-kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
-kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
-kD = (p_3 - pp_3)/gain_G_s;
 
 %% Error computation
 
