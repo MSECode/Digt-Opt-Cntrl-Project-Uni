@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.573
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Nov 13 21:51:01 2019
+ * C/C++ source code generated on : Tue Nov 19 23:59:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -333,12 +333,12 @@ void LabB_PIDOverRobot_step(void)
   /* External mode */
   rtExtModeUploadCheckTrigger(1);
 
-  {                                    /* Sample time: [0.005s, 0.0s] */
+  {                                    /* Sample time: [0.01s, 0.0s] */
     rtExtModeUpload(0, (real_T)LabB_PIDOverRobot_M->Timing.taskTime0);
   }
 
   /* signal main to stop simulation */
-  {                                    /* Sample time: [0.005s, 0.0s] */
+  {                                    /* Sample time: [0.01s, 0.0s] */
     if ((rtmGetTFinal(LabB_PIDOverRobot_M)!=-1) &&
         !((rtmGetTFinal(LabB_PIDOverRobot_M)-
            LabB_PIDOverRobot_M->Timing.taskTime0) >
@@ -374,13 +374,13 @@ void LabB_PIDOverRobot_initialize(void)
   (void) memset((void *)LabB_PIDOverRobot_M, 0,
                 sizeof(RT_MODEL_LabB_PIDOverRobot));
   rtmSetTFinal(LabB_PIDOverRobot_M, -1);
-  LabB_PIDOverRobot_M->Timing.stepSize0 = 0.005;
+  LabB_PIDOverRobot_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  LabB_PIDOverRobot_M->Sizes.checksums[0] = (2780981141U);
-  LabB_PIDOverRobot_M->Sizes.checksums[1] = (4048871963U);
-  LabB_PIDOverRobot_M->Sizes.checksums[2] = (1732226504U);
-  LabB_PIDOverRobot_M->Sizes.checksums[3] = (3506547639U);
+  LabB_PIDOverRobot_M->Sizes.checksums[0] = (4130344024U);
+  LabB_PIDOverRobot_M->Sizes.checksums[1] = (3427157383U);
+  LabB_PIDOverRobot_M->Sizes.checksums[2] = (3560410451U);
+  LabB_PIDOverRobot_M->Sizes.checksums[3] = (2543393154U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

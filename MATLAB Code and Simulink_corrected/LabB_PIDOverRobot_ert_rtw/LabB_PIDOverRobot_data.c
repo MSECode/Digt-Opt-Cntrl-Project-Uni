@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.573
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Nov 13 21:51:01 2019
+ * C/C++ source code generated on : Tue Nov 19 23:59:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -25,7 +25,7 @@ Parameters_LabB_PIDOverRobot LabB_PIDOverRobot_P = {
   /* Variable: fGyroBias
    * Referenced by: '<S2>/gyro bias'
    */
-  -262.0F,
+  -283.0F,
 
   /* Variable: fWheelRadius
    * Referenced by: '<S2>/convert to meters'
@@ -35,12 +35,12 @@ Parameters_LabB_PIDOverRobot LabB_PIDOverRobot_P = {
   /* Mask Parameter: PIDController_D
    * Referenced by: '<S28>/Derivative Gain'
    */
-  0.0553836152F,
+  0.055F,
 
   /* Mask Parameter: PIDController_I
    * Referenced by: '<S31>/Integral Gain'
    */
-  263.540863F,
+  300.0F,
 
   /* Mask Parameter: PIDController_InitialConditionF
    * Referenced by: '<S29>/Filter'
@@ -70,7 +70,7 @@ Parameters_LabB_PIDOverRobot LabB_PIDOverRobot_P = {
   /* Mask Parameter: PIDController_P
    * Referenced by: '<S39>/Proportional Gain'
    */
-  47.0230141F,
+  200.0F,
 
   /* Mask Parameter: PIDController_UpperSaturationLi
    * Referenced by: '<S41>/Saturation'
@@ -100,7 +100,7 @@ Parameters_LabB_PIDOverRobot LabB_PIDOverRobot_P = {
   /* Computed Parameter: DiscreteTimeIntegratorconvertfr
    * Referenced by: '<S2>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
    */
-  0.005F,
+  0.01F,
 
   /* Computed Parameter: DiscreteTimeIntegratorconvert_o
    * Referenced by: '<S2>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
@@ -115,12 +115,12 @@ Parameters_LabB_PIDOverRobot LabB_PIDOverRobot_P = {
   /* Computed Parameter: Integrator_gainval
    * Referenced by: '<S34>/Integrator'
    */
-  0.005F,
+  0.01F,
 
   /* Computed Parameter: Filter_gainval
    * Referenced by: '<S29>/Filter'
    */
-  0.005F,
+  0.01F,
 
   /* Computed Parameter: Gain_Gain
    * Referenced by: '<S1>/Gain'

@@ -10,12 +10,12 @@ d_time = (gyro_times(1:end-1) + gyro_times(2:end))/2;
 % Evaluate the average of the first derivative
 avg_gyro = mean(d_vals)*ones(length(d_vals),1);
 figure(1)
-plot( squeeze(tAngleFromGyro.time), squeeze(tAngleFromGyro.signals.values), '-y' );
+plot( squeeze(tAngleFromGyro.time), squeeze(tAngleFromGyro.signals.values), 'Color', '#0072BD' );
 hold on
-plot(d_time, d_vals, '-m')
-plot(d_time, avg_gyro, '--c')
+plot(d_time, d_vals, 'Color','#D95319')
+plot(d_time, avg_gyro, 'LineStyle', '--', 'Color', '#EDB120')
 grid on
-axis([0, max(tAngleFromGyro.time), -120, 200]);
+axis([0, max(tAngleFromGyro.time), -150, 250]);
 legend('raw signal', 'first derivative signal', 'average of first derivative');
 title('measurement from the gyroscope'); xlabel('time (sec)'); ylabel('degrees');
 set(gcf, 'Units', 'centimeters');
@@ -30,10 +30,10 @@ avg_acc = mean(acc_values)*ones(length(acc_values),1);
 acc_times = squeeze(tAngleFromAccelerometer.time);
 
 figure(2)
-plot( squeeze(tAngleFromAccelerometer.time), squeeze(tAngleFromAccelerometer.signals.values), '-m' );
+plot( squeeze(tAngleFromAccelerometer.time), squeeze(tAngleFromAccelerometer.signals.values), 'Color', '#0072BD');
 hold on
-plot(acc_times, avg_acc, '--c')
-axis([0, max(tAngleFromAccelerometer.time), -100, 200]);
+plot(acc_times, avg_acc, 'LineStyle', '--', 'Color', '#EDB120')
+axis([0, max(tAngleFromAccelerometer.time), -100, 100]);
 legend('raw signal', 'average signal');
 title('measurement from the accelerometer'); xlabel('time (sec)'); ylabel('degrees');
 set(gcf, 'Units', 'centimeters');
@@ -48,10 +48,10 @@ avg_enc = mean(enc_values)*ones(length(enc_values),1);
 enc_times = squeeze(tEncoder.time);
 
 figure(3)
-plot( squeeze(tEncoder.time), squeeze(tEncoder.signals.values), '-m' );
+plot( squeeze(tEncoder.time), squeeze(tEncoder.signals.values), 'Color', '#0072BD');
 hold on
-plot(enc_times, avg_enc, '--c')
-axis([0, max(tEncoder.time), -600, 1000]);
+plot(enc_times, avg_enc, 'LineStyle', '--', 'Color', '#EDB120')
+axis([0, max(tEncoder.time), -1000, 800]);
 legend('raw signal', 'average signal');
 title('measurement from the encoder'); xlabel('time (sec)'); ylabel('degrees');
 set(gcf, 'Units', 'centimeters');
@@ -67,9 +67,9 @@ mot_times = squeeze(tMotor.time);
 
 
 figure(4)
-plot( squeeze(tMotor.time), squeeze(tMotor.signals.values), '-m' );
+plot( squeeze(tMotor.time), squeeze(tMotor.signals.values), 'Color', '#0072BD' );
 hold on
-plot(mot_times, avg_mot, '--c')
+plot(mot_times, avg_mot, 'LineStyle', '--', 'Color', '#EDB120')
 axis([0, max(tMotor.time), -4, 4]);
 legend('raw signal', 'average signal');
 title('measurement from the motors'); xlabel('time (sec)'); ylabel('degrees');
@@ -92,19 +92,8 @@ B_in = [0;
 
 % Gain matrix calculated with acker function 
 % that can be used only with a SISO system
-p_4_acker = [-849 -3 -6 -5];
+p_4_acker = [-843.40 -5.64 -3 -5];
 K_ack = acker(A_in, B_in, p_4_acker);
 
-figure(1)
-plot( u.time, u.signals.values, '-m', 'LineWidth',2);
-grid on
-legend('input signal');
-title('measurement of the input'); xlabel('time (sec)'); ylabel('Volt');
-
-figure(2)
-plot( x.time, x.signals.values, 'LineWidth',2 );
-grid on
-legend('x_w', 'x_w_{dot}', '\theta_b', '\theta_b_{dot}');
-title('measurement of the wheel position'); xlabel('time (sec)'); ylabel('state signal');
 
 

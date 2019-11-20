@@ -30,7 +30,7 @@ D = [ 0 ;
 fSamplingPeriod = 0.01;
 
 cont_sys = ss(A, B, C, D);
-discr_sys = c2d(cont_sys, fSamplingPeriod, 'zoh');
+discr_sys = c2d(cont_sys, fSamplingPeriod, 'foh');
 
 [Ad, Bd, Cd, Dd] = ssdata(discr_sys);
 
@@ -73,26 +73,34 @@ Cx = C_tnacc(1,2:4);
 % domain
 
 s1 = tf('s');
-TF_closed = (0.7368846007e4 * s1 + 0.4129875744e5 + 0.8679012356e1 * s1 ^ 2) / ...
-            (s1 ^ 3 + s1 ^ 2 * 0.852042392947857479e3 + s1 * 0.730577406500885081e4 + 0.142742428567446332e5);
+% TF_closed = (0.7368846007e4 * s1 + 0.4129875744e5 + 0.8679012356e1 * s1 ^ 2) / ...
+%             (s1 ^ 3 + s1 ^ 2 * 0.852042392947857479e3 + s1 * 0.730577406500885081e4 + 0.142742428567446332e5);
 
 h = fSamplingPeriod;
 
-poles = exp(h*pole(TF_closed));
-afPoles = [poles; exp(h*(-5))]; 
+% poles = exp(h*pole(TF_closed));
+% afPoles = [poles; exp(h*(-5))]; 
 
+% Poles that we decide for the continuous transfer function
+polez  = [-843.35 -5.65 -4.50];
+poles = exp(h*polez);
+afPoles = [poles exp(h*(-5.00))]; 
 %% Luenberger DESIGN
 
 % Full-order Luenberger
-
-Ld = ( place( Ad', Cd', afPoles ) )'; %what other pole should we introduce??
+% Poles that we decide for the observer
+poles_4_obs_fc  = [-843.35 -5.65 -15.00 -20.00];
+poles_4_obs_fd = exp(h*poles_4_obs_fc);
+Ld = ( place( Ad', Cd', poles_4_obs_fd ) )';
 
 % Reduced-order Luenberger
 
 AA = Axx;
 CC = [Ayx; Cx];
 
-L_red = ( place( AA', CC', poles ) )'; 
+poles_4_obs_rc  = [-843.35 -5.65 -15.00];
+poles_4_obs_rd = exp(h*poles_4_obs_rc);
+L_red = ( place( AA', CC', poles_4_obs_rd ) )'; 
 
 L_acc  = L_red(1:3,1);
 L_nacc = L_red(1:3,2); 
@@ -107,14 +115,22 @@ Md7 = T(1:4,2:4);
 
 %% PID values and Kd
 
-p_1 = -843.40;
-p_2 = -5.64;
-p_3 = 5.68;
-pp_3 = -3;
-gain_G_s = -156.71;
-
-kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
-kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
-kD = (p_3 - pp_3)/gain_G_s;
+% p_1 = -843.40;
+% p_2 = -5.64;
+% p_3 = 5.68;
+% pp_3 = -3;
+% gain_G_s = -156.71;
+% 
+% kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
+% kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
+% kD = (p_3 - pp_3)/gain_G_s;
 
 Kd = place(Ad, Bd, afPoles);
+
+% % Do not modify these variables
+iNumberOfEncoderSteps	= 720;
+fGyroConversionFactor	= -1/131;
+fWheelRadius			= 0.0216; % [m]
+load('GyroBias.mat');
+
+

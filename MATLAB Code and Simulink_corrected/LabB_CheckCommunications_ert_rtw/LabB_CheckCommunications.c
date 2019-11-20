@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.467
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Nov 13 21:39:08 2019
+ * C/C++ source code generated on : Tue Nov 19 22:06:52 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -405,10 +405,10 @@ void LabB_CheckCommunications_initialize(void)
   LabB_CheckCommunications_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  LabB_CheckCommunications_M->Sizes.checksums[0] = (2449573342U);
-  LabB_CheckCommunications_M->Sizes.checksums[1] = (1942115899U);
-  LabB_CheckCommunications_M->Sizes.checksums[2] = (3920505769U);
-  LabB_CheckCommunications_M->Sizes.checksums[3] = (2695208229U);
+  LabB_CheckCommunications_M->Sizes.checksums[0] = (2089476194U);
+  LabB_CheckCommunications_M->Sizes.checksums[1] = (523655453U);
+  LabB_CheckCommunications_M->Sizes.checksums[2] = (2780318508U);
+  LabB_CheckCommunications_M->Sizes.checksums[3] = (3388020284U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
