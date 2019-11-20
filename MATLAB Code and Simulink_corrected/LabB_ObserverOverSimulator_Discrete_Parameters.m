@@ -82,14 +82,16 @@ h = fSamplingPeriod;
 % afPoles = [poles; exp(h*(-5))]; 
 
 % Poles that we decide for the continuous transfer function
-polez  = [-843.35 -5.65 -4.50];
+% polez  = [-843.35 -5.65 -4.50];
+polez  = [-813.5664810 -6.50 -0.55];
 poles = exp(h*polez);
 afPoles = [poles exp(h*(-5.00))]; 
 %% Luenberger DESIGN
 
 % Full-order Luenberger
 % Poles that we decide for the observer
-poles_4_obs_fc  = [-843.35 -5.65 -15.00 -20.00];
+% poles_4_obs_fc  = [-843.35 -5.65 -15.00 -20.00];
+poles_4_obs_fc  = [-813.5664810 -37.76525344 -20.00 -15.00];
 poles_4_obs_fd = exp(h*poles_4_obs_fc);
 Ld = ( place( Ad', Cd', poles_4_obs_fd ) )';
 
@@ -98,7 +100,8 @@ Ld = ( place( Ad', Cd', poles_4_obs_fd ) )';
 AA = Axx;
 CC = [Ayx; Cx];
 
-poles_4_obs_rc  = [-843.35 -5.65 -15.00];
+% poles_4_obs_rc  = [-843.35 -5.65 -15.00];
+poles_4_obs_rc  = [-813.5664810 -37.76525344 -10.00];
 poles_4_obs_rd = exp(h*poles_4_obs_rc);
 L_red = ( place( AA', CC', poles_4_obs_rd ) )'; 
 
@@ -124,6 +127,10 @@ Md7 = T(1:4,2:4);
 % kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
 % kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
 % kD = (p_3 - pp_3)/gain_G_s;
+
+kP = -200;
+kI = -300;
+kD = -0.055;
 
 Kd = place(Ad, Bd, afPoles);
 

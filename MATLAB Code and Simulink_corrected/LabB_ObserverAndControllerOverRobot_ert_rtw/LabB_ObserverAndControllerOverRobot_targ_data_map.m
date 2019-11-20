@@ -530,28 +530,16 @@
       dworkMap.sections(5) = section;
       clear section
       
-      section.nData     = 5;
-      section.data(5)  = dumData; %prealloc
+      section.nData     = 2;
+      section.data(2)  = dumData; %prealloc
       
-	  ;% LabB_ObserverAndControlle_DWork.ToWorkspace_PWORK.LoggedData
+	  ;% LabB_ObserverAndControlle_DWork.measuredx_wtheta_bandinputu_PWO.LoggedData
 	  section.data(1).logicalSrcIdx = 14;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% LabB_ObserverAndControlle_DWork.ToWorkspace1_PWORK.LoggedData
-	  section.data(2).logicalSrcIdx = 15;
-	  section.data(2).dtTransOffset = 1;
-	
-	  ;% LabB_ObserverAndControlle_DWork.ToWorkspace2_PWORK.LoggedData
-	  section.data(3).logicalSrcIdx = 16;
-	  section.data(3).dtTransOffset = 2;
-	
-	  ;% LabB_ObserverAndControlle_DWork.measuredx_wtheta_bandinputu_PWO.LoggedData
-	  section.data(4).logicalSrcIdx = 17;
-	  section.data(4).dtTransOffset = 3;
-	
 	  ;% LabB_ObserverAndControlle_DWork.x_w_hat_fulltheta_b_hat_fullx_w.LoggedData
-	  section.data(5).logicalSrcIdx = 18;
-	  section.data(5).dtTransOffset = 6;
+	  section.data(2).logicalSrcIdx = 15;
+	  section.data(2).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(6) = section;
@@ -561,43 +549,43 @@
       section.data(10)  = dumData; %prealloc
       
 	  ;% LabB_ObserverAndControlle_DWork.UD_DSTATE
-	  section.data(1).logicalSrcIdx = 19;
+	  section.data(1).logicalSrcIdx = 16;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% LabB_ObserverAndControlle_DWork.DiscreteTimeIntegratorconvertfr
-	  section.data(2).logicalSrcIdx = 20;
+	  section.data(2).logicalSrcIdx = 17;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% LabB_ObserverAndControlle_DWork.UD_DSTATE_o
-	  section.data(3).logicalSrcIdx = 21;
+	  section.data(3).logicalSrcIdx = 18;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_1_1_DSTATE
-	  section.data(4).logicalSrcIdx = 22;
+	  section.data(4).logicalSrcIdx = 19;
 	  section.data(4).dtTransOffset = 3;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_2_2_DSTATE
-	  section.data(5).logicalSrcIdx = 23;
+	  section.data(5).logicalSrcIdx = 20;
 	  section.data(5).dtTransOffset = 4;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_3_3_DSTATE
-	  section.data(6).logicalSrcIdx = 24;
+	  section.data(6).logicalSrcIdx = 21;
 	  section.data(6).dtTransOffset = 5;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_4_4_DSTATE
-	  section.data(7).logicalSrcIdx = 25;
+	  section.data(7).logicalSrcIdx = 22;
 	  section.data(7).dtTransOffset = 6;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_1_1_DSTATE_m
-	  section.data(8).logicalSrcIdx = 26;
+	  section.data(8).logicalSrcIdx = 23;
 	  section.data(8).dtTransOffset = 7;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_2_2_DSTATE_p
-	  section.data(9).logicalSrcIdx = 27;
+	  section.data(9).logicalSrcIdx = 24;
 	  section.data(9).dtTransOffset = 8;
 	
 	  ;% LabB_ObserverAndControlle_DWork.Internal_3_3_DSTATE_o
-	  section.data(10).logicalSrcIdx = 28;
+	  section.data(10).logicalSrcIdx = 25;
 	  section.data(10).dtTransOffset = 9;
 	
       nTotData = nTotData + section.nData;
@@ -630,8 +618,8 @@
   ;%
 
 
-  targMap.checksum0 = 3597283020;
-  targMap.checksum1 = 3007424531;
-  targMap.checksum2 = 147662510;
-  targMap.checksum3 = 4246571048;
+  targMap.checksum0 = 3182484813;
+  targMap.checksum1 = 2600611911;
+  targMap.checksum2 = 414518108;
+  targMap.checksum3 = 4160201380;
 

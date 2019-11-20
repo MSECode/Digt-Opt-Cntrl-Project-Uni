@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.709
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Tue Nov 19 19:41:45 2019
+ * C/C++ source code generated on : Wed Nov 20 16:02:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -124,18 +124,6 @@ typedef struct {
   soMPU6050Gyro_LabB_ObserverAndC obj_fy;/* '<S3>/Gyroscope' */
   codertarget_arduinobase_blocks_ obj_n;/* '<S39>/Digital Output1' */
   codertarget_arduinobase_blocks_ obj_j;/* '<S38>/Digital Output1' */
-  struct {
-    void *LoggedData;
-  } ToWorkspace_PWORK;                 /* '<S4>/To Workspace' */
-
-  struct {
-    void *LoggedData;
-  } ToWorkspace1_PWORK;                /* '<S4>/To Workspace1' */
-
-  struct {
-    void *LoggedData;
-  } ToWorkspace2_PWORK;                /* '<S4>/To Workspace2' */
-
   struct {
     void *LoggedData[3];
   } measuredx_wtheta_bandinputu_PWO;
