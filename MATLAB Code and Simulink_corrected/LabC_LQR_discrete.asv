@@ -1,0 +1,7 @@
+clc;
+close all;
+
+%% Task 6.3
+
+Sampl_frequency = 200; % He
+A_d = 
