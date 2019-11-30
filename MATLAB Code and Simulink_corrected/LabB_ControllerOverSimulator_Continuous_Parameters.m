@@ -2,8 +2,12 @@ close all;
 clear all;
 clc;
 
+
 %load('LabC_LQR.m');
-% K = [ -55.8226  -60.8787  -87.2338  -14.3051];
+% K = [ -55.8226  -60.8787  -87.2338  -14.3051]; %old kappa
+% K = [-0.0000  -42.2855  -61.5378   -9.9480];   % kappa with place
+K = [-15.8114  -46.4023  -78.7156  -13.2734];  % kappa with lqr
+
 %% Plots
 
 figure(1)

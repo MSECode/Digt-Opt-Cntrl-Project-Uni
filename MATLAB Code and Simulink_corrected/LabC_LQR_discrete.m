@@ -1,5 +1,7 @@
 clc;
 close all;
+clear all;
+
 
 %% Task 6.3
 
@@ -36,5 +38,18 @@ ss_discr = c2d(ss_cont, fSamplingPeriod, 'zoh');
 rho = 0.1;
 
 Qd = (Cd'*Cd);
-Kd = lqr(Ad, Bd, Qd, rho);
+Kd = dlqr(Ad, Bd, Qd, rho);
+
+%% Plots
+
+figure(1)
+plot( u.time, u.signals.values, '-m', 'Color', '#0072BD');
+grid on
+title('v_m'); xlabel('Times [sec]'); ylabel('Voltage [Volt]');
+
+figure(2)
+plot( x.time, x.signals.values(:,3), 'Color', '#0072BD' );
+grid on
+title('\theta_b'); xlabel('Times [sec]'); ylabel('degress [Deg]');
+
 

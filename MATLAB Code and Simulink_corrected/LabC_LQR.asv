@@ -35,9 +35,8 @@ rlocus(1 + SS_lqr/rho);
 
 %% Gain with pole placement method
 
-all_poles = pole(SS_lqr);
-poles = [-843.40 0 -5.679 -5.6422];
-K_place = place(A, B, poles);
+aa = pole(rlocus);
+% K_place = place(A, B, poles);
  
 %% LQR Gain 
 
