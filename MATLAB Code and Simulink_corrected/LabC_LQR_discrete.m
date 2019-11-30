@@ -5,24 +5,36 @@ close all;
 
 Sampl_frequency = 200; % Hertz
 fSamplingPeriod = 1/Sampl_frequency; 
-A_d = ;
-B_d = ;
-C_d = ;
-D_d = ;
 
-%% Symmetric Root Locus - discrete time
-rho = 0.1;
+%% Continuous SS system
 
-A_lqr = [A zeros(size(A)); -C'*C -A'];
-B_lqr = [B; -C'*D];
-C_lqr = [D'*C B'];
-D_lqr = [D'*D];
+A    = [0                  1                0              0;
+        0                  -0.7737853734e3 -0.6573516819e1 0.1624949284e2;
+        0                  0                0              1;
+        0                  0.3313238430e4   0.6307193805e2 -0.6957800702e2;];
+    
+B    = [0; 
+        0.3659795684e2; 
+        0; 
+        -0.1567072230e3];
 
-SS_lqr = ss(A_lqr, B_lqr, C_lqr, D_lqr);
-rlocus(1 + SS_lqr/rho);
+C = [ 5   1   10   2  ];
+  
+D = [ 0 ];
 
- 
+
+%% Discrete SS system
+
+ss_cont  = ss(A, B, C, D);
+ss_discr = c2d(ss_cont, fSamplingPeriod, 'zoh');
+
+[Ad, Bd, Cd, Dd] = ssdata(ss_discr);
+
+
 %% LQR Gain - discrete time
 
-Q = (C'*C);
-K = lqr(A, B, Q, rho);
+rho = 0.1;
+
+Qd = (Cd'*Cd);
+Kd = lqr(Ad, Bd, Qd, rho);
+
