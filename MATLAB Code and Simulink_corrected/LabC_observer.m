@@ -12,14 +12,15 @@ fSamplingPeriod = 1/Sampl_frequency;
 A    = [0                  1                0              0;
         0                  -0.7737853734e3 -0.6573516819e1 0.1624949284e2;
         0                  0                0              1;
-        0                  0.3313238430e4   0.6307193805e2 -0.6957800702e2;];
+        0                  0.3313238430e4   0.6307193805e2 -0.6957800702e2];
     
 B    = [0; 
         0.3659795684e2; 
         0; 
         -0.1567072230e3];
 
-C = [ 5   1   10   2  ];
+C = [ 1   0   0   0  ;
+      0   0   1   0  ];
   
 D = [ 0 ];
 
@@ -32,6 +33,7 @@ ss_discr = c2d(ss_cont, fSamplingPeriod, 'zoh');
 [Ad, Bd, Cd, Dd] = ssdata(ss_discr);
 
 %% Full and reduced state oberserver
+
 C_acc  = Cd(1,1:4); % accurate C
 C_nacc = Cd(2,1:4); % non-accurate C
   
@@ -61,30 +63,20 @@ Cx = C_tnacc(1,2:4);
 
 %% Pole mapping
 
-% Following the hint in the LabBook, we map the poles to the discrete
-% domain
-
-s1 = tf('s');
-% TF_closed = (0.7368846007e4 * s1 + 0.4129875744e5 + 0.8679012356e1 * s1 ^ 2) / ...
-%             (s1 ^ 3 + s1 ^ 2 * 0.852042392947857479e3 + s1 * 0.730577406500885081e4 + 0.142742428567446332e5);
-
 h = fSamplingPeriod;
 
-% poles = exp(h*pole(TF_closed));
-% afPoles = [poles; exp(h*(-5))]; 
+poles_cont = [-843.40 0 -5.679 -5.6422];
+poles_red_c  = [-843.40 -5.679 -5.6422];
+poles_discr = exp(4*h*poles_cont);
 
-% Poles that we decide for the continuous transfer function
-% polez  = [-843.35 -5.65 -4.50];
-polez  = [-813.5664810 -6.50 -0.55];
-poles = exp(h*polez);
-afPoles = [poles exp(h*(-5.00))]; 
+poles_red_d = exp(4*h*poles_red_c);
+afPoles = poles_discr; 
+
 %% Luenberger DESIGN
 
 % Full-order Luenberger
 % Poles that we decide for the observer
-% poles_4_obs_fc  = [-843.35 -5.65 -15.00 -20.00];
-poles_4_obs_fc  = [-813.5664810 -37.76525344 -20.00 -15.00];
-poles_4_obs_fd = exp(h*poles_4_obs_fc);
+poles_4_obs_fd = poles_discr;
 Ld = ( place( Ad', Cd', poles_4_obs_fd ) )';
 
 % Reduced-order Luenberger
@@ -92,9 +84,8 @@ Ld = ( place( Ad', Cd', poles_4_obs_fd ) )';
 AA = Axx;
 CC = [Ayx; Cx];
 
-% poles_4_obs_rc  = [-843.35 -5.65 -15.00];
-poles_4_obs_rc  = [-813.5664810 -37.76525344 -10.00];
-poles_4_obs_rd = exp(h*poles_4_obs_rc);
+
+poles_4_obs_rd = poles_red_d;
 L_red = ( place( AA', CC', poles_4_obs_rd ) )'; 
 
 L_acc  = L_red(1:3,1);
@@ -108,23 +99,14 @@ Md5 = L_acc;
 Md6 = T(1:4,1);
 Md7 = T(1:4,2:4);
 
-%% PID values and Kd
+%% Kd
 
-% p_1 = -843.40;
-% p_2 = -5.64;
-% p_3 = 5.68;
-% pp_3 = -3;
-% gain_G_s = -156.71;
-% 
-% kP = (p_1*pp_3 + p_2*pp_3 - p_1*p_3- p_2*p_3)/gain_G_s;
-% kI = (p_1*p_2*p_3 - p_1*p_2*pp_3)/gain_G_s;
-% kD = (p_3 - pp_3)/gain_G_s;
+C_bar = [5 1 10 2];
+rho = 0.1;
 
-kP = -200;
-kI = -300;
-kD = -0.055;
+Qd = C_bar'*C_bar;
 
-Kd = place(Ad, Bd, afPoles);
+Kd = dlqr(Ad, Bd, Qd, rho);
 
 % % Do not modify these variables
 iNumberOfEncoderSteps	= 720;
