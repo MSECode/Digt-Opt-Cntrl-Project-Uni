@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.709
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Nov 20 16:02:09 2019
+ * C/C++ source code generated on : Sat Nov 30 22:06:14 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -695,12 +695,12 @@ void LabB_ObserverAndControllerOverRobot_step(void)
   /* External mode */
   rtExtModeUploadCheckTrigger(1);
 
-  {                                    /* Sample time: [0.01s, 0.0s] */
+  {                                    /* Sample time: [0.005s, 0.0s] */
     rtExtModeUpload(0, (real_T)LabB_ObserverAndControllerOv_M->Timing.taskTime0);
   }
 
   /* signal main to stop simulation */
-  {                                    /* Sample time: [0.01s, 0.0s] */
+  {                                    /* Sample time: [0.005s, 0.0s] */
     if ((rtmGetTFinal(LabB_ObserverAndControllerOv_M)!=-1) &&
         !((rtmGetTFinal(LabB_ObserverAndControllerOv_M)-
            LabB_ObserverAndControllerOv_M->Timing.taskTime0) >
@@ -736,13 +736,13 @@ void LabB_ObserverAndControllerOverRobot_initialize(void)
   (void) memset((void *)LabB_ObserverAndControllerOv_M, 0,
                 sizeof(RT_MODEL_LabB_ObserverAndContro));
   rtmSetTFinal(LabB_ObserverAndControllerOv_M, -1);
-  LabB_ObserverAndControllerOv_M->Timing.stepSize0 = 0.01;
+  LabB_ObserverAndControllerOv_M->Timing.stepSize0 = 0.005;
 
   /* External mode info */
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[0] = (3182484813U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[1] = (2600611911U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[2] = (414518108U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[3] = (4160201380U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[0] = (3827196063U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[1] = (3146059267U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[2] = (2330768989U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[3] = (1977346807U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

@@ -65,7 +65,7 @@ Cx = C_tnacc(1,2:4);
 
 h = fSamplingPeriod;
 
-poles_cont = [-843.40 0 -5.679 -5.6422];
+poles_cont = [-843.40 -5 -5.679 -5.6422];
 poles_red_c  = [-843.40 -5.679 -5.6422];
 poles_discr = exp(4*h*poles_cont);
 
