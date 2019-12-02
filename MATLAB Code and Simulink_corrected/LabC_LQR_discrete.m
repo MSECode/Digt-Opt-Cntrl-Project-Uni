@@ -5,8 +5,8 @@ clear all;
 
 %% Task 6.3
 
-Sampl_frequency = 200; % Hertz
-fSamplingPeriod = 1/Sampl_frequency; 
+Sampl_frequency = 20; % Hertz
+fSamplingPeriod = round(1/Sampl_frequency,3); 
 
 %% Continuous SS system
 
