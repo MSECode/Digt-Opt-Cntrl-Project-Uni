@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.716
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Tue Dec  3 23:01:00 2019
+ * C/C++ source code generated on : Wed Dec  4 00:06:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -984,9 +984,9 @@ void LabC_CompensatorOverRobot_step(void)
     LabC_CompensatorOverRobot_M->Timing.stepSize0;
 
   {
-    /* Update absolute timer for sample time: [0.005s, 0.0s] */
+    /* Update absolute timer for sample time: [0.01s, 0.0s] */
     /* The "clockTick1" counts the number of times the code of this task has
-     * been executed. The resolution of this integer timer is 0.005, which is the step size
+     * been executed. The resolution of this integer timer is 0.01, which is the step size
      * of the task. Size of "clockTick1" ensures timer will not overflow during the
      * application lifespan selected.
      */
@@ -1024,7 +1024,7 @@ void LabC_CompensatorOverRobot_initialize(void)
   rtsiSetSolverName(&LabC_CompensatorOverRobot_M->solverInfo,"FixedStepDiscrete");
   rtmSetTPtr(LabC_CompensatorOverRobot_M,
              &LabC_CompensatorOverRobot_M->Timing.tArray[0]);
-  LabC_CompensatorOverRobot_M->Timing.stepSize0 = 0.005;
+  LabC_CompensatorOverRobot_M->Timing.stepSize0 = 0.01;
 
   /* block I/O */
   (void) memset(((void *) &LabC_CompensatorOverRobot_B), 0,
@@ -1041,7 +1041,7 @@ void LabC_CompensatorOverRobot_initialize(void)
     {
       static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 60.0, 60.0, 120.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 2.5, 2.5, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 2.0, 2.0, 0.0 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr = (void *)
         pTimeValues0;

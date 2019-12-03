@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.716
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Tue Dec  3 23:01:00 2019
+ * C/C++ source code generated on : Wed Dec  4 00:06:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -53,7 +53,7 @@ volatile boolean_T stopRequested = false;
 volatile boolean_T runModel = false;
 int main(void)
 {
-  float modelBaseRate = 0.005;
+  float modelBaseRate = 0.01;
   float systemClock = 0;
 
   /* Initialize variables */

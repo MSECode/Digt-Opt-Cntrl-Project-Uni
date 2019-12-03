@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.716
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Tue Dec  3 23:01:00 2019
+ * C/C++ source code generated on : Wed Dec  4 00:06:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -25,14 +25,14 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Variable: Ad
    * Referenced by: '<S5>/Gain7'
    */
-  { 1.0F, 0.0F, 0.0F, 0.0F, 0.00148423773F, 0.0959582478F, 0.0150555559F,
-    3.87206936F, -2.45159154E-5F, -0.00510342466F, 1.00054157F, 0.19651106F,
-    7.37766604E-5F, 0.0189603604F, 0.00468479376F, 0.919228137F },
+  { 1.0F, 0.0F, 0.0F, 0.0F, 0.00191196182F, 0.0825469866F, 0.034648262F,
+    3.93383074F, -4.21218756E-5F, -0.00186998339F, 1.00192726F, 0.357495189F,
+    0.000169621067F, 0.0192243923F, 0.00927918404F, 0.919316769F },
 
   /* Variable: Bd
    * Referenced by: '<S5>/Gain8'
    */
-  { 0.00016628606F, 0.042758733F, -0.000712087087F, -0.183138415F },
+  { 0.000382542348F, 0.0433930494F, -0.00163876906F, -0.186059564F },
 
   /* Variable: Cd
    * Referenced by: '<S5>/Gain10'
@@ -42,39 +42,39 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Variable: Kd
    * Referenced by: '<S1>/controller'
    */
-  { -10.7526808F, -38.3462677F, -54.5879326F, -9.05630779F },
+  { -10.3518953F, -37.7235069F, -53.534359F, -8.87081718F },
 
   /* Variable: Ld
    * Referenced by: '<S5>/Gain9'
    */
-  { 0.108033374F, -0.584724426F, 0.00358050922F, 2.65766239F, -0.000925783941F,
-    2.26473117F, 0.216934323F, -7.25700712F },
+  { 0.203032434F, 0.00310423807F, 0.0139477104F, 0.283973724F, 0.00378754037F,
+    0.109245539F, 0.3872675F, 3.94186163F },
 
   /* Variable: Md1
    * Referenced by: '<S5>/Gain'
    */
-  { 0.888171315F, -0.0667210221F, 0.188835889F, -0.0577879883F, 0.0522552095F,
-    2.38873363F, 0.00106397655F, 0.0167880245F, 0.845496297F },
+  { 0.791306734F, -0.0751670823F, 0.205316365F, -0.0577633157F, 0.0509239174F,
+    2.05381274F, 0.00108082418F, 0.0164189283F, 0.752529621F },
 
   /* Variable: Md2
    * Referenced by: '<S5>/Gain1'
    */
-  { -0.00887308829F, 0.037862476F, -0.349323452F },
+  { -0.0201283339F, 0.037065953F, -0.562210619F },
 
   /* Variable: Md3
    * Referenced by: '<S5>/Gain2'
    */
-  { -49.0780869F, -29.4447708F, -999.392395F },
+  { -48.3333817F, -16.5395927F, -983.292664F },
 
   /* Variable: Md4
    * Referenced by: '<S5>/Gain3'
    */
-  { 0.113573447F, 0.0623394623F, 0.0321761966F },
+  { 0.212656379F, 0.0739937797F, 0.193596944F },
 
   /* Variable: Md5
    * Referenced by: '<S5>/Gain4'
    */
-  { 49.0780869F, 29.4447708F, 999.392395F },
+  { 48.3333817F, 16.5395927F, 983.292664F },
 
   /* Variable: Md6
    * Referenced by: '<S5>/Gain5'
@@ -139,7 +139,7 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Computed Parameter: Gain4_Gain
    * Referenced by: '<S1>/Gain4'
    */
-  10.7526808F,
+  10.3518953F,
 
   /* Computed Parameter: converttoradians_Gain
    * Referenced by: '<S2>/convert to  radians'
@@ -149,12 +149,12 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Computed Parameter: TSamp_WtEt
    * Referenced by: '<S6>/TSamp'
    */
-  200.0F,
+  100.0F,
 
   /* Computed Parameter: DiscreteTimeIntegratorconvertfr
    * Referenced by: '<S2>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
    */
-  0.005F,
+  0.01F,
 
   /* Computed Parameter: DiscreteTimeIntegratorconvert_o
    * Referenced by: '<S2>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
@@ -164,7 +164,7 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Computed Parameter: TSamp_WtEt_j
    * Referenced by: '<S7>/TSamp'
    */
-  200.0F,
+  100.0F,
 
   /* Computed Parameter: Internal_1_1_A
    * Referenced by: '<S8>/Internal_1_1'
@@ -389,7 +389,7 @@ Parameters_LabC_CompensatorOver LabC_CompensatorOverRobot_P = {
   /* Computed Parameter: ManualSwitch_CurrentSetting
    * Referenced by: '<S5>/Manual Switch'
    */
-  1U,
+  0U,
 
   /* Computed Parameter: ManualSwitch1_CurrentSetting
    * Referenced by: '<S5>/Manual Switch1'
