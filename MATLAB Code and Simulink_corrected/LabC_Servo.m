@@ -4,7 +4,7 @@ clear all;
 
 %% Task 6.4 - Observer Part
 
-Sampl_frequency = 20; % Hertz
+Sampl_frequency = 200; % Hertz
 fSamplingPeriod = round(1/Sampl_frequency,3); 
 
 %% Continuous SS system
