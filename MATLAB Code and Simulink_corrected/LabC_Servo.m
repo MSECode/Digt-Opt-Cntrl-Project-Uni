@@ -1,10 +1,9 @@
 clc
 close all;
 clear all;
-
 %% Task 6.4 - Observer Part
 
-Sampl_frequency = 200; % Hertz
+Sampl_frequency = 50; % Hertz
 fSamplingPeriod = round(1/Sampl_frequency,3); 
 
 %% Continuous SS system
@@ -122,12 +121,12 @@ load('GyroBias.mat');
 
 %% Plots
 
-figure(1)
-plot( u.time, u.signals.values, '-m', 'Color', '#0072BD');
-grid on
-title('v_m'); xlabel('Times [sec]'); ylabel('Voltage [Volt]');
-
-figure(2)
-plot( x.time, x.signals.values(:,3), 'Color', '#0072BD' );
-grid on
-title('\theta_b'); xlabel('Times [sec]'); ylabel('degress [Deg]');
+% figure(1)
+% plot( u.time, u.signals.values, '-m', 'Color', '#0072BD');
+% grid on
+% title('v_m'); xlabel('Times [sec]'); ylabel('Voltage [Volt]');
+% 
+% figure(2)
+% plot( x.time, x.signals.values(:,3), 'Color', '#0072BD' );
+% grid on
+% title('\theta_b'); xlabel('Times [sec]'); ylabel('degress [Deg]');
