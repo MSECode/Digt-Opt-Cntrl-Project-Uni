@@ -9,7 +9,7 @@
  *
  * Model version              : 1.709
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Sat Nov 30 22:41:55 2019
+ * C source code generated on : Fri Dec 13 17:08:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -80,9 +80,8 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&LabB_ObserverAndControlle_DWork.obj_n), 16, 0, 2 },
 
-  { (char_T *)
-    (&LabB_ObserverAndControlle_DWork.measuredx_wtheta_bandinputu_PWO.LoggedData[
-     0]), 11, 0, 7 },
+  { (char_T *)(&LabB_ObserverAndControlle_DWork.ToWorkspace_PWORK.LoggedData),
+    11, 0, 10 },
 
   { (char_T *)(&LabB_ObserverAndControlle_DWork.UD_DSTATE), 1, 0, 10 }
 };

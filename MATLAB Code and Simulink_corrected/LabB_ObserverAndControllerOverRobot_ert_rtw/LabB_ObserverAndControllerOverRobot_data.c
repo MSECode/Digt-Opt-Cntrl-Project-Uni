@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.709
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Sat Nov 30 22:41:55 2019
+ * C/C++ source code generated on : Fri Dec 13 17:08:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -32,7 +32,7 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Variable: Bd
    * Referenced by: '<S4>/Gain8'
    */
-  { 0.00016628606F, 0.042758733F, -0.000712087087F, -0.183138415F },
+  { 0.000205147822F, 0.00999404769F, -0.000878737716F, -0.0429189764F },
 
   /* Variable: Cd
    * Referenced by: '<S4>/Gain10'
@@ -42,7 +42,7 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Variable: Kd
    * Referenced by: '<S1>/controller'
    */
-  { -10.7526808F, -38.3462677F, -54.5879326F, -9.05630779F },
+  { -14.8482208F, -50.449192F, -71.4430389F, -11.8812037F },
 
   /* Variable: Ld
    * Referenced by: '<S4>/Gain9'
@@ -59,7 +59,7 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Variable: Md2
    * Referenced by: '<S4>/Gain1'
    */
-  { -0.00887308829F, 0.037862476F, -0.349323452F },
+  { -0.010947F, 0.00395351695F, -0.247942165F },
 
   /* Variable: Md3
    * Referenced by: '<S4>/Gain2'
@@ -89,7 +89,7 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Variable: fGyroBias
    * Referenced by: '<S2>/gyro bias'
    */
-  -283.0F,
+  -275.0F,
 
   /* Variable: fWheelRadius
    * Referenced by: '<S2>/convert to meters'
@@ -109,12 +109,12 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Mask Parameter: M1V4LeftMotorDriverPWM6D8FST_Vs
    * Referenced by: '<S38>/Saturation -Vsupply to Vsupply'
    */
-  7.2F,
+  9.0F,
 
   /* Mask Parameter: M1V4MiddleMotorDriverPWM2D5FST_
    * Referenced by: '<S39>/Saturation -Vsupply to Vsupply'
    */
-  7.2F,
+  9.0F,
 
   /* Computed Parameter: Constant_Value
    * Referenced by: '<S40>/Constant'
@@ -354,22 +354,22 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Computed Parameter: SaturationVsupplytoVsupply_Lowe
    * Referenced by: '<S38>/Saturation -Vsupply to Vsupply'
    */
-  -7.2F,
+  -9.0F,
 
   /* Computed Parameter: conversiontodutycycleconverttou
    * Referenced by: '<S38>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
    */
-  35.4166679F,
+  28.333334F,
 
   /* Computed Parameter: SaturationVsupplytoVsupply_Lo_g
    * Referenced by: '<S39>/Saturation -Vsupply to Vsupply'
    */
-  -7.2F,
+  -9.0F,
 
   /* Computed Parameter: conversiontodutycycleconvertt_b
    * Referenced by: '<S39>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
    */
-  35.4166679F,
+  28.333334F,
 
   /* Computed Parameter: ManualSwitch_CurrentSetting
    * Referenced by: '<S4>/Manual Switch'
@@ -379,7 +379,7 @@ Parameters_LabB_ObserverAndCont LabB_ObserverAndControllerOve_P = {
   /* Computed Parameter: ManualSwitch1_CurrentSetting
    * Referenced by: '<S4>/Manual Switch1'
    */
-  0U
+  1U
 };
 
 /*

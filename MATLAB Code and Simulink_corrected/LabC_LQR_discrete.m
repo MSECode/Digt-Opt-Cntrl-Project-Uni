@@ -40,16 +40,4 @@ rho = 0.1;
 Qd = (Cd'*Cd);
 Kd = dlqr(Ad, Bd, Qd, rho);
 
-%% Plots
-
-figure(1)
-plot( u.time, u.signals.values, '-m', 'Color', '#0072BD');
-grid on
-title('v_m'); xlabel('Times [sec]'); ylabel('Voltage [Volt]');
-
-figure(2)
-plot( x.time, x.signals.values(:,3), 'Color', '#0072BD' );
-grid on
-title('\theta_b'); xlabel('Times [sec]'); ylabel('degress [Deg]');
-
 

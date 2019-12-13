@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.709
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Sat Nov 30 22:41:55 2019
+ * C/C++ source code generated on : Fri Dec 13 17:08:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -739,10 +739,10 @@ void LabB_ObserverAndControllerOverRobot_initialize(void)
   LabB_ObserverAndControllerOv_M->Timing.stepSize0 = 0.005;
 
   /* External mode info */
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[0] = (3827196063U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[1] = (3146059267U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[2] = (2330768989U);
-  LabB_ObserverAndControllerOv_M->Sizes.checksums[3] = (1977346807U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[0] = (3309007340U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[1] = (1411211663U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[2] = (3842087311U);
+  LabB_ObserverAndControllerOv_M->Sizes.checksums[3] = (891692427U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
