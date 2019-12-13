@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'LabC_CompensatorOverRobot'.
  *
- * Model version                  : 1.720
+ * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Dec  4 23:57:09 2019
+ * C/C++ source code generated on : Fri Dec 13 19:15:01 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -57,7 +57,7 @@ volatile boolean_T stopRequested = false;
 volatile boolean_T runModel = false;
 int main(void)
 {
-  float modelBaseRate = 0.02;
+  float modelBaseRate = 0.006;
   float systemClock = 0;
 
   /* Initialize variables */

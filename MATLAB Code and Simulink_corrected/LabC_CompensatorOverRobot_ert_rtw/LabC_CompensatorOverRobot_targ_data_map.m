@@ -360,7 +360,7 @@
   ;%**************************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 1;
+    nTotSects     = 2;
     sectIdxOffset = 0;
     
     ;%
@@ -383,8 +383,19 @@
     ;%
     ;% Auto data (LabC_CompensatorOverRobot_B)
     ;%
-      section.nData     = 8;
-      section.data(8)  = dumData; %prealloc
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
+      
+	  ;% LabC_CompensatorOverRobot_B.Add2
+	  section.data(1).logicalSrcIdx = 11;
+	  section.data(1).dtTransOffset = 0;
+	
+      nTotData = nTotData + section.nData;
+      sigMap.sections(1) = section;
+      clear section
+      
+      section.nData     = 7;
+      section.data(7)  = dumData; %prealloc
       
 	  ;% LabC_CompensatorOverRobot_B.converttometers
 	  section.data(1).logicalSrcIdx = 0;
@@ -402,24 +413,20 @@
 	  section.data(4).logicalSrcIdx = 6;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% LabC_CompensatorOverRobot_B.Add2
-	  section.data(5).logicalSrcIdx = 11;
+	  ;% LabC_CompensatorOverRobot_B.Product1
+	  section.data(5).logicalSrcIdx = 13;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% LabC_CompensatorOverRobot_B.Product1
-	  section.data(6).logicalSrcIdx = 13;
-	  section.data(6).dtTransOffset = 8;
-	
 	  ;% LabC_CompensatorOverRobot_B.Add
-	  section.data(7).logicalSrcIdx = 15;
-	  section.data(7).dtTransOffset = 9;
+	  section.data(6).logicalSrcIdx = 15;
+	  section.data(6).dtTransOffset = 5;
 	
 	  ;% LabC_CompensatorOverRobot_B.Add3
-	  section.data(8).logicalSrcIdx = 18;
-	  section.data(8).dtTransOffset = 12;
+	  section.data(7).logicalSrcIdx = 18;
+	  section.data(7).dtTransOffset = 8;
 	
       nTotData = nTotData + section.nData;
-      sigMap.sections(1) = section;
+      sigMap.sections(2) = section;
       clear section
       
     
@@ -441,7 +448,7 @@
       
     nTotData      = 0; %add to this count as we go
     nTotSects     = 8;
-    sectIdxOffset = 1;
+    sectIdxOffset = 2;
     
     ;%
     ;% Define dummy sections & preallocate arrays
@@ -705,8 +712,8 @@
   ;%
 
 
-  targMap.checksum0 = 3063898337;
-  targMap.checksum1 = 1562674587;
-  targMap.checksum2 = 4252934174;
-  targMap.checksum3 = 795506521;
+  targMap.checksum0 = 2754566116;
+  targMap.checksum1 = 1768492962;
+  targMap.checksum2 = 2547700183;
+  targMap.checksum3 = 1376595060;
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'LabC_CompensatorOverRobot'.
  *
- * Model version                  : 1.720
+ * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Dec  4 23:57:09 2019
+ * C/C++ source code generated on : Fri Dec 13 19:15:01 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -165,8 +165,8 @@ void LabC_CompensatorOverRobot_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[7]) {
-      currTimeIndex = 6;
+    } else if (t >= pTimeValues[13]) {
+      currTimeIndex = 12;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -187,9 +187,23 @@ void LabC_CompensatorOverRobot_step(void)
       real_T t2 = pTimeValues[currTimeIndex + 1];
       if (t1 == t2) {
         if (t < t1) {
-          LabC_CompensatorOverRobot_B.FromWs = pDataValues[currTimeIndex];
+          {
+            int_T elIdx;
+            for (elIdx = 0; elIdx < 3; ++elIdx) {
+              (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] =
+                pDataValues[currTimeIndex];
+              pDataValues += 14;
+            }
+          }
         } else {
-          LabC_CompensatorOverRobot_B.FromWs = pDataValues[currTimeIndex + 1];
+          {
+            int_T elIdx;
+            for (elIdx = 0; elIdx < 3; ++elIdx) {
+              (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] =
+                pDataValues[currTimeIndex + 1];
+              pDataValues += 14;
+            }
+          }
         }
       } else {
         real_T f1 = (t2 - t) / (t2 - t1);
@@ -197,11 +211,17 @@ void LabC_CompensatorOverRobot_step(void)
         real_T d1;
         real_T d2;
         int_T TimeIndex= currTimeIndex;
-        d1 = pDataValues[TimeIndex];
-        d2 = pDataValues[TimeIndex + 1];
-        LabC_CompensatorOverRobot_B.FromWs = (real_T) rtInterpolate(d1, d2, f1,
-          f2);
-        pDataValues += 8;
+
+        {
+          int_T elIdx;
+          for (elIdx = 0; elIdx < 3; ++elIdx) {
+            d1 = pDataValues[TimeIndex];
+            d2 = pDataValues[TimeIndex + 1];
+            (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] = (real_T)
+              rtInterpolate(d1, d2, f1, f2);
+            pDataValues += 14;
+          }
+        }
       }
     }
   }
@@ -219,8 +239,8 @@ void LabC_CompensatorOverRobot_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[7]) {
-      currTimeIndex = 6;
+    } else if (t >= pTimeValues[5]) {
+      currTimeIndex = 4;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -255,7 +275,7 @@ void LabC_CompensatorOverRobot_step(void)
         d2 = pDataValues[TimeIndex + 1];
         LabC_CompensatorOverRobot_B.FromWs_p = (real_T) rtInterpolate(d1, d2, f1,
           f2);
-        pDataValues += 8;
+        pDataValues += 6;
       }
     }
   }
@@ -273,8 +293,8 @@ void LabC_CompensatorOverRobot_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[5]) {
-      currTimeIndex = 4;
+    } else if (t >= pTimeValues[7]) {
+      currTimeIndex = 6;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -310,17 +330,21 @@ void LabC_CompensatorOverRobot_step(void)
         d2 = pDataValues[TimeIndex + 1];
         LabC_CompensatorOverRobot_B.ManualSwitch1 = (real_T) rtInterpolate(d1,
           d2, f1, f2);
-        pDataValues += 6;
+        pDataValues += 8;
       }
     }
   }
 
   /* ManualSwitch: '<Root>/Manual Switch1' */
   if (LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting != 1) {
-    /* ManualSwitch: '<Root>/Manual Switch' */
+    /* ManualSwitch: '<Root>/Manual Switch' incorporates:
+     *  Sum: '<Root>/Add'
+     */
     if (LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting == 1) {
       LabC_CompensatorOverRobot_B.ManualSwitch1 =
-        LabC_CompensatorOverRobot_B.FromWs;
+        (LabC_CompensatorOverRobot_B.FromWs[0] +
+         LabC_CompensatorOverRobot_B.FromWs[1]) +
+        LabC_CompensatorOverRobot_B.FromWs[2];
     } else {
       LabC_CompensatorOverRobot_B.ManualSwitch1 =
         LabC_CompensatorOverRobot_B.FromWs_p;
@@ -873,9 +897,9 @@ void LabC_CompensatorOverRobot_step(void)
     rtExtModeUpload(0, (real_T)LabC_CompensatorOverRobot_M->Timing.t[0]);
   }
 
-  {                                    /* Sample time: [0.02s, 0.0s] */
+  {                                    /* Sample time: [0.006s, 0.0s] */
     rtExtModeUpload(1, (real_T)((LabC_CompensatorOverRobot_M->Timing.clockTick1)
-      * 0.02));
+      * 0.006));
   }
 
   /* signal main to stop simulation */
@@ -903,9 +927,9 @@ void LabC_CompensatorOverRobot_step(void)
     LabC_CompensatorOverRobot_M->Timing.stepSize0;
 
   {
-    /* Update absolute timer for sample time: [0.02s, 0.0s] */
+    /* Update absolute timer for sample time: [0.006s, 0.0s] */
     /* The "clockTick1" counts the number of times the code of this task has
-     * been executed. The resolution of this integer timer is 0.02, which is the step size
+     * been executed. The resolution of this integer timer is 0.006, which is the step size
      * of the task. Size of "clockTick1" ensures timer will not overflow during the
      * application lifespan selected.
      */
@@ -944,18 +968,18 @@ void LabC_CompensatorOverRobot_initialize(void)
   rtmSetTPtr(LabC_CompensatorOverRobot_M,
              &LabC_CompensatorOverRobot_M->Timing.tArray[0]);
   rtmSetTFinal(LabC_CompensatorOverRobot_M, -1);
-  LabC_CompensatorOverRobot_M->Timing.stepSize0 = 0.02;
+  LabC_CompensatorOverRobot_M->Timing.stepSize0 = 0.006;
 
   /* External mode info */
-  LabC_CompensatorOverRobot_M->Sizes.checksums[0] = (3063898337U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[1] = (1562674587U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[2] = (4252934174U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[3] = (795506521U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[0] = (2754566116U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[1] = (1768492962U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[2] = (2547700183U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[3] = (1376595060U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[9];
+    static const sysRanDType *systemRan[10];
     LabC_CompensatorOverRobot_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
@@ -967,6 +991,7 @@ void LabC_CompensatorOverRobot_initialize(void)
     systemRan[6] = &rtAlwaysEnabled;
     systemRan[7] = &rtAlwaysEnabled;
     systemRan[8] = &rtAlwaysEnabled;
+    systemRan[9] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(LabC_CompensatorOverRobot_M->extModeInfo,
       &LabC_CompensatorOverRobot_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(LabC_CompensatorOverRobot_M->extModeInfo,
@@ -1005,10 +1030,13 @@ void LabC_CompensatorOverRobot_initialize(void)
 
     /* Start for FromWorkspace: '<S1>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 5.0, 5.0, 15.0, 15.0, 25.0, 25.0,
-        40.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 20.0, 20.0, 30.0, 30.0,
+        40.0, 40.0, 50.0, 50.0, 60.0, 60.0, 80.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.2, 0.2, 0.0, 0.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0,
+        1.0, 0.995, 0.995, 0.99, 0.99, 0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 1.0, 0.5, 0.5, 0.0 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr = (void *)
         pTimeValues0;
@@ -1019,10 +1047,9 @@ void LabC_CompensatorOverRobot_initialize(void)
 
     /* Start for FromWorkspace: '<S2>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 6.0, 6.0, 8.0, 8.0, 10.0, 10.0, 20.0
-      } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 30.0, 30.0, 40.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.2, 0.2, 0.0, 0.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 1.8, 1.8, 1.8 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK_c.TimePtr = (void *)
         pTimeValues0;
@@ -1033,9 +1060,11 @@ void LabC_CompensatorOverRobot_initialize(void)
 
     /* Start for FromWorkspace: '<S6>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 60.0, 60.0, 120.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 30.0, 30.0, 40.0, 40.0,
+        60.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 4.0, 4.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 1.5, 1.5, 1.5, 1.5, 0.0
+      } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK_a.TimePtr = (void *)
         pTimeValues0;

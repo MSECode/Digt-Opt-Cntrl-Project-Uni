@@ -7,9 +7,9 @@
  *
  * Code generation for model "LabC_CompensatorOverRobot".
  *
- * Model version              : 1.720
+ * Model version              : 1.723
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Wed Dec  4 23:57:09 2019
+ * C source code generated on : Fri Dec 13 19:15:01 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -67,7 +67,9 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&LabC_CompensatorOverRobot_B.converttometers), 1, 0, 16 }
+  { (char_T *)(&LabC_CompensatorOverRobot_B.Add2[0]), 1, 0, 4 },
+
+  { (char_T *)(&LabC_CompensatorOverRobot_B.converttometers), 1, 0, 12 }
   ,
 
   { (char_T *)(&LabC_CompensatorOverRobot_DWork.obj), 17, 0, 2 },
@@ -91,7 +93,7 @@ static DataTypeTransition rtBTransitions[] = {
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  9U,
+  10U,
   rtBTransitions
 };
 

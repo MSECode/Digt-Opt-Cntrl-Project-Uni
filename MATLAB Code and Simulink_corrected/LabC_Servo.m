@@ -3,8 +3,14 @@ close all;
 clear all;
 %% Task 6.4 - Observer Part
 
-Sampl_frequency = 50; % Hertz
+Sampl_frequency = 180; % Hertz
 fSamplingPeriod = round(1/Sampl_frequency,3); 
+
+% % Do not modify these variables
+iNumberOfEncoderSteps	= 720;
+fGyroConversionFactor	= -1/131;
+fWheelRadius			= 0.0216; % [m]
+load('GyroBias.mat');
 
 %% Continuous SS system
 
@@ -27,7 +33,7 @@ D = [ 0 ];
 %% Discrete SS system
 
 ss_cont  = ss(A, B, C, D);
-ss_discr = c2d(ss_cont, fSamplingPeriod, 'zoh');
+ss_discr = c2d(ss_cont, fSamplingPeriod, 'foh');
 
 [Ad, Bd, Cd, Dd] = ssdata(ss_discr);
 
@@ -113,20 +119,44 @@ CC = [1 0 0 0];
 
 Nud = 1/(CC*inv(eye(4)-Ad + Bd*Kd)*Bd);
 Nxd = 0;
-% % Do not modify these variables
-iNumberOfEncoderSteps	= 720;
-fGyroConversionFactor	= -1/131;
-fWheelRadius			= 0.0216; % [m]
-load('GyroBias.mat');
 
 %% Plots
 
-% figure(1)
-% plot( u.time, u.signals.values, '-m', 'Color', '#0072BD');
-% grid on
-% title('v_m'); xlabel('Times [sec]'); ylabel('Voltage [Volt]');
-% 
-% figure(2)
-% plot( x.time, x.signals.values(:,3), 'Color', '#0072BD' );
-% grid on
-% title('\theta_b'); xlabel('Times [sec]'); ylabel('degress [Deg]');
+% Input
+voltage_values = zeros(length(v_m.signals.values),1);
+voltage_times = v_m.time(:,1);
+for i = 1:length(v_m.signals.values)
+    voltage_values(i,1) = voltage_values(i,1) + v_m.signals.values(:,:,i);
+end
+
+figure(1)
+stairs( voltage_times, voltage_values, 'Color', '#0072BD');
+grid on
+title('u'); xlabel('time [sec]'); ylabel('Volt [V]');
+xlim([0 60])
+ylim([-10 10])
+
+% Angle
+theta_values = zeros(length(measured_theta_b.signals.values),1);
+theta_times = measured_theta_b.time(:,1);
+for i = 1:length(measured_theta_b.signals.values)
+    theta_values(i,1) = theta_values(i,1) + measured_theta_b.signals.values(:,:,i);
+end
+
+figure(2)
+stairs( theta_times, theta_values, 'Color', '#0072BD');
+grid on
+title('\theta_b'); xlabel('time [sec]'); ylabel('degress [deg]');
+xlim([0 60])
+
+% Position
+wheel_values = zeros(length(measured_x_w.signals.values),1);
+wheel_times = measured_x_w.time(:,1);
+for i = 1:length(measured_x_w.signals.values)
+    wheel_values(i,1) = wheel_values(i,1) + measured_x_w.signals.values(:,:,i);
+end
+figure(3)
+stairs( wheel_times, wheel_values, 'Color', '#0072BD');
+grid on
+title('x_w'); xlabel('time (sec)'); ylabel('meters [m]');
+xlim([0 60])

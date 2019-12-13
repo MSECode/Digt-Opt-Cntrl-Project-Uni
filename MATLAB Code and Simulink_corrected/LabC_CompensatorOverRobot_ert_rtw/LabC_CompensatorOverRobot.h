@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'LabC_CompensatorOverRobot'.
  *
- * Model version                  : 1.720
+ * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Dec  4 23:57:09 2019
+ * C/C++ source code generated on : Fri Dec 13 19:15:01 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -89,20 +89,20 @@
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T FromWs[3];                    /* '<S1>/FromWs' */
+  real32_T Add2[4];                    /* '<S7>/Add2' */
   real_T ManualSwitch1;                /* '<Root>/Manual Switch1' */
   real_T FromWs_p;                     /* '<S2>/FromWs' */
-  real_T FromWs;                       /* '<S1>/FromWs' */
+  real32_T Gain10[2];
   int16_T out[3];
   real32_T converttometers;            /* '<S4>/convert to meters' */
   real32_T DiscreteTimeIntegratorconvertfr;
     /* '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
   real32_T Sum1;                       /* '<S10>/Sum1' */
   real32_T Sum3;                       /* '<S10>/Sum3' */
-  real32_T Add2[4];                    /* '<S7>/Add2' */
   real32_T Product1;                   /* '<S3>/Product1' */
   real32_T Add[3];                     /* '<S7>/Add' */
   real32_T Add3[4];                    /* '<S7>/Add3' */
-  real32_T Gain10[2];
   real32_T Gain3;                      /* '<S3>/Gain3' */
   real32_T rtb_Gain8_idx_0;
   real32_T rtb_Gain8_idx_1;
