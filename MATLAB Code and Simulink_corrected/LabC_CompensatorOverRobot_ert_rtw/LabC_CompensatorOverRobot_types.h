@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'LabC_CompensatorOverRobot'.
  *
- * Model version                  : 1.716
+ * Model version                  : 1.720
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Wed Dec  4 00:06:46 2019
+ * C/C++ source code generated on : Wed Dec  4 23:57:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -20,6 +20,7 @@
 #ifndef RTW_HEADER_LabC_CompensatorOverRobot_types_h_
 #define RTW_HEADER_LabC_CompensatorOverRobot_types_h_
 #include "rtwtypes.h"
+#include "multiword_types.h"
 #ifndef typedef_soMPU6050Gyro_LabC_CompensatorO
 #define typedef_soMPU6050Gyro_LabC_CompensatorO
 
@@ -42,7 +43,7 @@ typedef struct {
 
 #endif                               /*typedef_Encoder_arduino_LabC_Compensato*/
 
-/* Custom Type definition for MATLABSystem: '<S55>/PWM' */
+/* Custom Type definition for MATLABSystem: '<S42>/PWM' */
 #include "MW_SVD.h"
 #ifndef typedef_codertarget_arduinobase_blocks_
 #define typedef_codertarget_arduinobase_blocks_
@@ -54,15 +55,6 @@ typedef struct {
 } codertarget_arduinobase_blocks_;
 
 #endif                               /*typedef_codertarget_arduinobase_blocks_*/
-
-#ifndef typedef_c_cell_wrap_LabC_CompensatorOve
-#define typedef_c_cell_wrap_LabC_CompensatorOve
-
-typedef struct {
-  uint32_T f1[8];
-} c_cell_wrap_LabC_CompensatorOve;
-
-#endif                               /*typedef_c_cell_wrap_LabC_CompensatorOve*/
 
 #ifndef typedef_c_cell_LabC_CompensatorOverRobo
 #define typedef_c_cell_LabC_CompensatorOverRobo
@@ -106,24 +98,6 @@ typedef struct {
 } codertarget_arduinobase_interna;
 
 #endif                               /*typedef_codertarget_arduinobase_interna*/
-
-#ifndef typedef_codertarget_arduinobase_inter_o
-#define typedef_codertarget_arduinobase_inter_o
-
-typedef struct {
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  c_cell_wrap_LabC_CompensatorOve inputVarSize;
-  real_T Protocol;
-  real_T port;
-  real_T dataSizeInBytes;
-  real_T dataType;
-  real_T sendModeEnum;
-  real_T sendFormatEnum;
-} codertarget_arduinobase_inter_o;
-
-#endif                               /*typedef_codertarget_arduinobase_inter_o*/
 
 /* Parameters (default storage) */
 typedef struct Parameters_LabC_CompensatorOver_ Parameters_LabC_CompensatorOver;

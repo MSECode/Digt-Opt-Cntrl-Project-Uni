@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'LabC_CompensatorOverRobot'. 
 ## 
 ## Makefile     : LabC_CompensatorOverRobot.mk
-## Generated on : Tue Dec 03 23:54:39 2019
+## Generated on : Wed Dec 04 23:23:22 2019
 ## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
@@ -204,7 +204,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~2/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire -IC:/ProgramData/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/libraries/Wire/utility -IC:/Users/jlosi/OneDrive/DOCUME~1/MATLAB/RASPlib/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire/src/utility -IC:/Users/jlosi/OneDrive/DOCUME~1/MATLAB/RASPlib/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/shared/svd/include -I$(START_DIR)/LabC_CompensatorOverRobot_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/mega -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~1/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~1/SCHEDU~1/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/shared/EXTERN~1/include
+INCLUDES_BUILDINFO = -I$(START_DIR) -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire -IC:/ProgramData/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/libraries/Wire/utility -IC:/Users/jlosi/OneDrive/DOCUME~1/MATLAB/RASPlib/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/3P778C~1.INS/ARDUIN~1.INS/hardware/arduino/avr/LIBRAR~1/Wire/src/utility -IC:/Users/jlosi/OneDrive/DOCUME~1/MATLAB/RASPlib/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/shared/svd/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~2/include -I$(START_DIR)/LabC_CompensatorOverRobot_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils -I$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino -I$(ARDUINO_ROOT)/hardware/arduino/avr/variants/mega -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~1/include -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/SUPPOR~1/ARDUIN~1/SCHEDU~1/include -I$(ARDUINO_ROOT)/hardware/tools/avr/avr/include/avr -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2019b/toolbox/target/shared/EXTERN~1/include
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -212,10 +212,10 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -D_RTT_USE_SERIAL0_ -DMODEL=LabC_CompensatorOverRobot -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DXCP_CUSTOM_PLATFORM -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT -DMW_TIMERID=5 -DMW_PRESCALAR=256 -DMW_TIMERCOUNT=64911 -DMW_SCHEDULERCOUNTER=1 -D_RTT_BAUDRATE_SERIAL0_=115200 -D_RTT_BAUDRATE_SERIAL1_=9600 -D_RTT_BAUDRATE_SERIAL2_=9600 -D_RTT_BAUDRATE_SERIAL3_=9600 -D_RTT_ANALOG_REF_=0 -D_RTT_OVERRUN_DIGITAL_PIN_=13
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_ = -DMODEL=LabC_CompensatorOverRobot -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DON_TARGET_WAIT_FOR_START=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DEXT_MODE=1 -DINTEGER_CODE=0 -DMT=0 -DXCP_CUSTOM_PLATFORM -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT -DMW_TIMERID=5 -DMW_PRESCALAR=256 -DMW_TIMERCOUNT=64286 -DMW_SCHEDULERCOUNTER=1 -D_RTT_BAUDRATE_SERIAL0_=115200 -D_RTT_BAUDRATE_SERIAL1_=9600 -D_RTT_BAUDRATE_SERIAL2_=9600 -D_RTT_BAUDRATE_SERIAL3_=9600 -D_RTT_ANALOG_REF_=0 -D_RTT_OVERRUN_DIGITAL_PIN_=13
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DEXT_MODE=1 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DTID01EQ=1
+DEFINES_OPTS = -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=1
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DSTACK_SIZE=64 -DRT
 DEFINES_STANDARD = -DMODEL=LabC_CompensatorOverRobot -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
@@ -225,7 +225,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_SerialWrite.cpp Wire.cpp twi.c I2Cdev.cpp MPU6050.cpp MPU6050wrapper.cpp C:/Users/jlosi/OneDrive/Documenti/MATLAB/RASPlib/blocks/../src/encoder_arduino.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_arduino_digitalio.cpp $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/LabC_CompensatorOverRobot.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/LabC_CompensatorOverRobot_data.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rtGetInf.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rtGetNaN.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rt_nonfinite.c "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.S" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/hooks.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WInterrupts.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_analog.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_digital.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_shift.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/abi.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/CDC.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/IPAddress.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/new.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Print.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Stream.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Tone.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/USBCore.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WMath.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WString.cpp" C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
+SRCS = Wire.cpp twi.c I2Cdev.cpp MPU6050.cpp MPU6050wrapper.cpp C:/Users/jlosi/OneDrive/Documenti/MATLAB/RASPlib/blocks/../src/encoder_arduino.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_arduino_digitalio.cpp $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/LabC_CompensatorOverRobot.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/LabC_CompensatorOverRobot_data.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rtGetInf.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rtGetNaN.c $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rt_nonfinite.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.S" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/hooks.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WInterrupts.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_analog.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_digital.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_pulse.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/wiring_shift.c" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/abi.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/CDC.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/IPAddress.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/new.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Print.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Stream.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/Tone.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/USBCore.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WMath.cpp" "$(ARDUINO_ROOT)/hardware/arduino/avr/cores/arduino/WString.cpp" C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
 
 MAIN_SRC = $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/ert_main.c
 
@@ -235,7 +235,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_SerialWrite.o Wire.o twi.o I2Cdev.o MPU6050.o MPU6050wrapper.o encoder_arduino.o MW_PWM.o ArduinoPinHandleMap.o MW_arduino_digitalio.o LabC_CompensatorOverRobot.o LabC_CompensatorOverRobot_data.o rtGetInf.o rtGetNaN.o rt_nonfinite.o wiring_pulse.S.o hooks.o WInterrupts.o wiring.o wiring_analog.o wiring_digital.o wiring_pulse.o wiring_shift.o abi.o CDC.o HardwareSerial.o HardwareSerial0.o HardwareSerial1.o HardwareSerial2.o HardwareSerial3.o PluggableUSB.o IPAddress.o new.o Print.o Stream.o Tone.o USBCore.o WMath.o WString.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o
+OBJS = Wire.o twi.o I2Cdev.o MPU6050.o MPU6050wrapper.o encoder_arduino.o MW_PWM.o ArduinoPinHandleMap.o MW_arduino_digitalio.o LabC_CompensatorOverRobot.o LabC_CompensatorOverRobot_data.o rtGetInf.o rtGetNaN.o rt_nonfinite.o updown.o ext_work.o rtiostream_utils.o wiring_pulse.S.o hooks.o WInterrupts.o wiring.o wiring_analog.o wiring_digital.o wiring_pulse.o wiring_shift.o abi.o CDC.o HardwareSerial.o HardwareSerial0.o HardwareSerial1.o HardwareSerial2.o HardwareSerial3.o PluggableUSB.o IPAddress.o new.o Print.o Stream.o Tone.o USBCore.o WMath.o WString.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o rtiostream_interface.o ext_svr_daemon.o rtiostream_serial_daemon.o daemon_checksum.o
 
 MAIN_OBJ = ert_main.o
 
@@ -442,22 +442,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.S.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.s
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.S.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.S
-	$(AS) $(ASFLAGS) -o "$@" "$<"
-
-
-%.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
 %.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/libraries/Wire/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
@@ -538,6 +522,22 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+%.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 %.o : $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
@@ -586,7 +586,35 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-MW_SerialWrite.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinobase/src/MW_SerialWrite.cpp
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
@@ -627,6 +655,18 @@ rtGetNaN.o : $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rtGetNaN.c
 
 
 rt_nonfinite.o : $(START_DIR)/LabC_CompensatorOverRobot_ert_rtw/rt_nonfinite.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+updown.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+ext_work.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rtiostream_utils.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -736,6 +776,22 @@ io_wrappers.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supp
 
 arduinoAVRScheduler.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+rtiostream_interface.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+ext_svr_daemon.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+rtiostream_serial_daemon.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+daemon_checksum.o : C:/ProgramData/MATLAB/SupportPackages/R2019b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
 ###########################################################################
