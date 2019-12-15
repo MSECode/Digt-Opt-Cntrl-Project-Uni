@@ -122,6 +122,17 @@ Nxd = 0;
 
 %% Plots
 
+%Reference
+reference_values = reference.signals.values(:,1);
+reference_times = reference.time(:,1);
+
+subplot(4,1,1)
+plot(reference_times, reference_values, 'Color', '#0072BD')
+grid on
+title('r(t)'); xlabel('time [sec]'); ylabel('meters [m]');
+xlim([0 reference_times(end)])
+ylim([-0.5 1.5])
+
 % Input
 voltage_values = zeros(length(v_m.signals.values),1);
 voltage_times = v_m.time(:,1);
@@ -129,11 +140,11 @@ for i = 1:length(v_m.signals.values)
     voltage_values(i,1) = voltage_values(i,1) + v_m.signals.values(:,:,i);
 end
 
-figure(1)
+subplot(4,1,2)
 stairs( voltage_times, voltage_values, 'Color', '#0072BD');
 grid on
 title('u'); xlabel('time [sec]'); ylabel('Volt [V]');
-xlim([0 60])
+xlim([0 reference_times(end)])
 ylim([-10 10])
 
 % Angle
@@ -143,11 +154,11 @@ for i = 1:length(measured_theta_b.signals.values)
     theta_values(i,1) = theta_values(i,1) + measured_theta_b.signals.values(:,:,i);
 end
 
-figure(2)
+subplot(4,1,3)
 stairs( theta_times, theta_values, 'Color', '#0072BD');
 grid on
-title('\theta_b'); xlabel('time [sec]'); ylabel('degress [deg]');
-xlim([0 60])
+title('\theta_b'); xlabel('time [sec]'); ylabel('radiant [rad]');
+xlim([0 reference_times(end)])
 
 % Position
 wheel_values = zeros(length(measured_x_w.signals.values),1);
@@ -155,8 +166,26 @@ wheel_times = measured_x_w.time(:,1);
 for i = 1:length(measured_x_w.signals.values)
     wheel_values(i,1) = wheel_values(i,1) + measured_x_w.signals.values(:,:,i);
 end
-figure(3)
+
+subplot(4,1,4)
 stairs( wheel_times, wheel_values, 'Color', '#0072BD');
 grid on
 title('x_w'); xlabel('time (sec)'); ylabel('meters [m]');
-xlim([0 60])
+xlim([0 reference_times(end)])
+
+%% Variable to save for Themis
+% 
+% % % Test 1
+% % group_14_experiments_1_times = reference_times;
+% % group_14_experiments_1_encoder = wheel_values;
+% % group_14_experiments_1_angle = theta_values;
+% % group_14_experiments_1_actuation = voltage_values;
+% 
+% % Test 2
+% group_14_experiments_2_times = reference_times;
+% group_14_experiments_2_encoder = wheel_values;
+% group_14_experiments_2_angle = theta_values;
+% group_14_experiments_2_actuation = voltage_values;
+% 
+% % Max distance
+% group_14_r_max = 0.23;

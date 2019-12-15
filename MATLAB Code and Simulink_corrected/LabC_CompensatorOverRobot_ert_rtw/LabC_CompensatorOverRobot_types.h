@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Fri Dec 13 19:15:01 2019
+ * C/C++ source code generated on : Sun Dec 15 13:24:53 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -43,7 +43,7 @@ typedef struct {
 
 #endif                               /*typedef_Encoder_arduino_LabC_Compensato*/
 
-/* Custom Type definition for MATLABSystem: '<S42>/PWM' */
+/* Custom Type definition for MATLABSystem: '<S43>/PWM' */
 #include "MW_SVD.h"
 #ifndef typedef_codertarget_arduinobase_blocks_
 #define typedef_codertarget_arduinobase_blocks_

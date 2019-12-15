@@ -319,24 +319,28 @@
       paramMap.sections(1) = section;
       clear section
       
-      section.nData     = 4;
-      section.data(4)  = dumData; %prealloc
+      section.nData     = 5;
+      section.data(5)  = dumData; %prealloc
       
-	  ;% LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting
+	  ;% LabC_CompensatorOverRobot_P.ManualSwitch2_CurrentSetting
 	  section.data(1).logicalSrcIdx = 150;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting_e
+	  ;% LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting
 	  section.data(2).logicalSrcIdx = 151;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting
+	  ;% LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting_e
 	  section.data(3).logicalSrcIdx = 152;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting_g
+	  ;% LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting
 	  section.data(4).logicalSrcIdx = 153;
 	  section.data(4).dtTransOffset = 3;
+	
+	  ;% LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting_g
+	  section.data(5).logicalSrcIdx = 154;
+	  section.data(5).dtTransOffset = 4;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(2) = section;
@@ -386,44 +390,48 @@
       section.nData     = 1;
       section.data(1)  = dumData; %prealloc
       
-	  ;% LabC_CompensatorOverRobot_B.Add2
-	  section.data(1).logicalSrcIdx = 11;
+	  ;% LabC_CompensatorOverRobot_B.Add
+	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
       clear section
       
-      section.nData     = 7;
-      section.data(7)  = dumData; %prealloc
+      section.nData     = 8;
+      section.data(8)  = dumData; %prealloc
       
 	  ;% LabC_CompensatorOverRobot_B.converttometers
-	  section.data(1).logicalSrcIdx = 0;
+	  section.data(1).logicalSrcIdx = 1;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr
-	  section.data(2).logicalSrcIdx = 2;
+	  section.data(2).logicalSrcIdx = 3;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% LabC_CompensatorOverRobot_B.Sum1
-	  section.data(3).logicalSrcIdx = 4;
+	  section.data(3).logicalSrcIdx = 5;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% LabC_CompensatorOverRobot_B.Sum3
-	  section.data(4).logicalSrcIdx = 6;
+	  section.data(4).logicalSrcIdx = 7;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% LabC_CompensatorOverRobot_B.Product1
-	  section.data(5).logicalSrcIdx = 13;
+	  ;% LabC_CompensatorOverRobot_B.Add2
+	  section.data(5).logicalSrcIdx = 12;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% LabC_CompensatorOverRobot_B.Add
-	  section.data(6).logicalSrcIdx = 15;
-	  section.data(6).dtTransOffset = 5;
+	  ;% LabC_CompensatorOverRobot_B.Product1
+	  section.data(6).logicalSrcIdx = 14;
+	  section.data(6).dtTransOffset = 8;
+	
+	  ;% LabC_CompensatorOverRobot_B.Add_n
+	  section.data(7).logicalSrcIdx = 16;
+	  section.data(7).dtTransOffset = 9;
 	
 	  ;% LabC_CompensatorOverRobot_B.Add3
-	  section.data(7).logicalSrcIdx = 18;
-	  section.data(7).dtTransOffset = 8;
+	  section.data(8).logicalSrcIdx = 19;
+	  section.data(8).dtTransOffset = 12;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(2) = section;
@@ -561,60 +569,68 @@
       dworkMap.sections(5) = section;
       clear section
       
-      section.nData     = 13;
-      section.data(13)  = dumData; %prealloc
+      section.nData     = 15;
+      section.data(15)  = dumData; %prealloc
       
 	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr
 	  section.data(1).logicalSrcIdx = 14;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK_c.TimePtr
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace_PWORK.LoggedData
 	  section.data(2).logicalSrcIdx = 15;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK_a.TimePtr
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK_f.TimePtr
 	  section.data(3).logicalSrcIdx = 16;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.Measurements_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK_c.TimePtr
 	  section.data(4).logicalSrcIdx = 17;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.FullObserver_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_PWORK_a.TimePtr
 	  section.data(5).logicalSrcIdx = 18;
-	  section.data(5).dtTransOffset = 6;
+	  section.data(5).dtTransOffset = 4;
+	
+	  ;% LabC_CompensatorOverRobot_DWork.Measurements_PWORK.LoggedData
+	  section.data(6).logicalSrcIdx = 19;
+	  section.data(6).dtTransOffset = 5;
+	
+	  ;% LabC_CompensatorOverRobot_DWork.FullObserver_PWORK.LoggedData
+	  section.data(7).logicalSrcIdx = 20;
+	  section.data(7).dtTransOffset = 8;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.ReducedObserver_PWORK.LoggedData
-	  section.data(6).logicalSrcIdx = 19;
-	  section.data(6).dtTransOffset = 9;
-	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace_PWORK.LoggedData
-	  section.data(7).logicalSrcIdx = 20;
-	  section.data(7).dtTransOffset = 12;
-	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace1_PWORK.LoggedData
 	  section.data(8).logicalSrcIdx = 21;
-	  section.data(8).dtTransOffset = 13;
+	  section.data(8).dtTransOffset = 11;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace2_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace_PWORK_n.LoggedData
 	  section.data(9).logicalSrcIdx = 22;
 	  section.data(9).dtTransOffset = 14;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace3_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace1_PWORK.LoggedData
 	  section.data(10).logicalSrcIdx = 23;
 	  section.data(10).dtTransOffset = 15;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace4_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace2_PWORK.LoggedData
 	  section.data(11).logicalSrcIdx = 24;
 	  section.data(11).dtTransOffset = 16;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace5_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace3_PWORK.LoggedData
 	  section.data(12).logicalSrcIdx = 25;
 	  section.data(12).dtTransOffset = 17;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace6_PWORK.LoggedData
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace4_PWORK.LoggedData
 	  section.data(13).logicalSrcIdx = 26;
 	  section.data(13).dtTransOffset = 18;
+	
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace5_PWORK.LoggedData
+	  section.data(14).logicalSrcIdx = 27;
+	  section.data(14).dtTransOffset = 19;
+	
+	  ;% LabC_CompensatorOverRobot_DWork.ToWorkspace6_PWORK.LoggedData
+	  section.data(15).logicalSrcIdx = 28;
+	  section.data(15).dtTransOffset = 20;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(6) = section;
@@ -624,63 +640,67 @@
       section.data(10)  = dumData; %prealloc
       
 	  ;% LabC_CompensatorOverRobot_DWork.UD_DSTATE
-	  section.data(1).logicalSrcIdx = 27;
+	  section.data(1).logicalSrcIdx = 29;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr
-	  section.data(2).logicalSrcIdx = 28;
+	  section.data(2).logicalSrcIdx = 30;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.UD_DSTATE_o
-	  section.data(3).logicalSrcIdx = 29;
+	  section.data(3).logicalSrcIdx = 31;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE
-	  section.data(4).logicalSrcIdx = 30;
+	  section.data(4).logicalSrcIdx = 32;
 	  section.data(4).dtTransOffset = 3;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE
-	  section.data(5).logicalSrcIdx = 31;
+	  section.data(5).logicalSrcIdx = 33;
 	  section.data(5).dtTransOffset = 4;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE
-	  section.data(6).logicalSrcIdx = 32;
+	  section.data(6).logicalSrcIdx = 34;
 	  section.data(6).dtTransOffset = 5;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_4_4_DSTATE
-	  section.data(7).logicalSrcIdx = 33;
+	  section.data(7).logicalSrcIdx = 35;
 	  section.data(7).dtTransOffset = 6;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE_n
-	  section.data(8).logicalSrcIdx = 34;
+	  section.data(8).logicalSrcIdx = 36;
 	  section.data(8).dtTransOffset = 7;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE_o
-	  section.data(9).logicalSrcIdx = 35;
+	  section.data(9).logicalSrcIdx = 37;
 	  section.data(9).dtTransOffset = 8;
 	
 	  ;% LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE_o
-	  section.data(10).logicalSrcIdx = 36;
+	  section.data(10).logicalSrcIdx = 38;
 	  section.data(10).dtTransOffset = 9;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(7) = section;
       clear section
       
-      section.nData     = 3;
-      section.data(3)  = dumData; %prealloc
+      section.nData     = 4;
+      section.data(4)  = dumData; %prealloc
       
 	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK.PrevIndex
-	  section.data(1).logicalSrcIdx = 37;
+	  section.data(1).logicalSrcIdx = 39;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK_l.PrevIndex
-	  section.data(2).logicalSrcIdx = 38;
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK_g.PrevIndex
+	  section.data(2).logicalSrcIdx = 40;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK_o.PrevIndex
-	  section.data(3).logicalSrcIdx = 39;
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK_l.PrevIndex
+	  section.data(3).logicalSrcIdx = 41;
 	  section.data(3).dtTransOffset = 2;
+	
+	  ;% LabC_CompensatorOverRobot_DWork.FromWs_IWORK_o.PrevIndex
+	  section.data(4).logicalSrcIdx = 42;
+	  section.data(4).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(8) = section;
@@ -712,8 +732,8 @@
   ;%
 
 
-  targMap.checksum0 = 2754566116;
-  targMap.checksum1 = 1768492962;
-  targMap.checksum2 = 2547700183;
-  targMap.checksum3 = 1376595060;
+  targMap.checksum0 = 2256406322;
+  targMap.checksum1 = 2348432651;
+  targMap.checksum2 = 3336846878;
+  targMap.checksum3 = 4293065318;
 
