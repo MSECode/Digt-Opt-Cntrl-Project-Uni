@@ -173,7 +173,7 @@ grid on
 title('x_w'); xlabel('time (sec)'); ylabel('meters [m]');
 xlim([0 reference_times(end)])
 
-%% Variable to save for Themis
+%% Variable to save
 % 
 % % % Test 1
 % % group_14_experiments_1_times = reference_times;
