@@ -24,6 +24,7 @@ In order to obtain the Equations of Motion (EOM) the static and dynamic analysis
 ![Model of the robot ](/images/image_4_readme/model_robot.png)
 Moreover, the electronic circuit was based on the model displayed below.
 ![Model of the robot ](/images/image_4_readme/model_circuit.png)
+
 Therefore, the equations of motion obtained from the defined models were linearized in order to get the linear time-invariant (LTI) state-space (SS) system.
 
 After that, a PID controller was designed using the pole placement method. Furthermore, the system was tested in Simulink adding a signal in input to simulated an external distrurbance.
