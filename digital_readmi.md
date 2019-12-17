@@ -69,3 +69,9 @@ A gif of the robot's behaviour is also proposed at the end.
 ---
 
 ## Team, license & copyright
+
+Contributors and team members:
+
+- Gabór Major - EIT Digital Autonomous Systems -
+- Jacopo Losi - EIT Digital Autonomous Systems -
+- Nicola Saljoughi - EIT Digital Autonomous Systems -
