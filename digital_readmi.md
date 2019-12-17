@@ -21,7 +21,7 @@ The project was divided into three main parts:
 ### Laboratory A
 
 In order to obtain the Equations of Motion (EOM) the static and dynamic analysis was perormed using the model of the robot shown below.
-![Model of the robot ](/images/image_4_readme/model_robot.png)
+![Model of the robot ](/images/image_4_readme/model_robot.png = 20x100)
 
 ### Laboratory B
 
