@@ -55,9 +55,9 @@ A gif of the robot's behaviour is also proposed at the end.
 
 ![Second given reference signal ](/images/image_4_readme/demo_2.png)
 
-![Animation of stabilizing robot ](/images/image_4_readme/animation_1.png)
+![Animation of stabilizing robot ](/images/image_4_readme/animation_1.gif)
 
-![Animation of following reference signal ](/images/image_4_readme/animation_2.png)
+![Animation of following reference signal ](/images/image_4_readme/animation_2.gif)
 
 ## Testing & Outcomes
 
