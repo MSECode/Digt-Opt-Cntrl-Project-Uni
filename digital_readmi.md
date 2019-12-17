@@ -32,6 +32,10 @@ At the end, the closed-loop system was simulated in Simulink in order to find th
 
 ### Laboratory B
 
+In this part we started to communicate with the real robot. First of all, the calibration for the gyroscope was performed and the communication checked.
+After that, the main task of this part was completed. A reduced and a full Luenberger observers were designed using the pole allocation method because we cannot directly meausure all the state of the system. Therefore, it is necessary to design this kind of observer to simulate some of the states.
+At the end of this part, some tests were performed
+
 ### Laboratory C
 
 ## Testing & Outcomes
