@@ -38,6 +38,23 @@ At the end of this part, some tests were performed
 
 ### Laboratory C
 
+Basically, this part deals with the optimal control designing. Actually, the LQR technique was developed in discrete time in order to obtain an optimal control to the system.
+
+Moreover, a modul for managing external reference was defined, since we would like to give reference inputs to the robot and make it follows them.
+
+At this point, some tests was perfomed on the robot using differents sampling frequencies in order to choose the best one, i.e. the lowest frequency that makes the robot follow sufficiently safely the nastier reference signal.
+
+At the end, the behaviour of the robot was tested with a couple of given reference signals.
+
+Below, the results of some test and of the final demo are shown.
+A gif of the robot's behaviour is also proposed at the end.
+
+![Plots for one of the tests ](/images/image_4_readme/test_image.png)
+
+![First given reference signal ](/images/image_4_readme/demo_1.png)
+
+![Second given reference signal ](/images/image_4_readme/demo_2.png)
+
 ## Testing & Outcomes
 
 ---
