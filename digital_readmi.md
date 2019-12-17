@@ -49,6 +49,8 @@ At the end, the behaviour of the robot was tested with a couple of given referen
 Below, the results of some test and of the final demo are shown.
 A gif of the robot's behaviour is also proposed at the end.
 
+## Fina tests & outcomes
+
 ![Plots for one of the tests ](/images/image_4_readme/test_image.png)
 
 ![First given reference signal ](/images/image_4_readme/demo_1.png)
@@ -58,8 +60,6 @@ A gif of the robot's behaviour is also proposed at the end.
 ![Animation of stabilizing robot ](/images/image_4_readme/animation_1.gif)
 
 ![Animation of following reference signal ](/images/image_4_readme/animation_2.gif)
-
-## Testing & Outcomes
 
 ---
 
