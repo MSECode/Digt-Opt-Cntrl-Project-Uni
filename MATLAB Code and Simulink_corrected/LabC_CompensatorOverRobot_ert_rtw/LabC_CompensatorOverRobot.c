@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Sun Dec 15 13:24:53 2019
+ * C/C++ source code generated on : Sun Dec 15 20:31:55 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -165,8 +165,8 @@ void LabC_CompensatorOverRobot_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[11]) {
-      currTimeIndex = 10;
+    } else if (t >= pTimeValues[6]) {
+      currTimeIndex = 5;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -187,23 +187,9 @@ void LabC_CompensatorOverRobot_step(void)
       real_T t2 = pTimeValues[currTimeIndex + 1];
       if (t1 == t2) {
         if (t < t1) {
-          {
-            int_T elIdx;
-            for (elIdx = 0; elIdx < 2; ++elIdx) {
-              (&LabC_CompensatorOverRobot_B.FromWs_n[0])[elIdx] =
-                pDataValues[currTimeIndex];
-              pDataValues += 12;
-            }
-          }
+          LabC_CompensatorOverRobot_B.FromWs = pDataValues[currTimeIndex];
         } else {
-          {
-            int_T elIdx;
-            for (elIdx = 0; elIdx < 2; ++elIdx) {
-              (&LabC_CompensatorOverRobot_B.FromWs_n[0])[elIdx] =
-                pDataValues[currTimeIndex + 1];
-              pDataValues += 12;
-            }
-          }
+          LabC_CompensatorOverRobot_B.FromWs = pDataValues[currTimeIndex + 1];
         }
       } else {
         real_T f1 = (t2 - t) / (t2 - t1);
@@ -211,95 +197,11 @@ void LabC_CompensatorOverRobot_step(void)
         real_T d1;
         real_T d2;
         int_T TimeIndex= currTimeIndex;
-
-        {
-          int_T elIdx;
-          for (elIdx = 0; elIdx < 2; ++elIdx) {
-            d1 = pDataValues[TimeIndex];
-            d2 = pDataValues[TimeIndex + 1];
-            (&LabC_CompensatorOverRobot_B.FromWs_n[0])[elIdx] = (real_T)
-              rtInterpolate(d1, d2, f1, f2);
-            pDataValues += 12;
-          }
-        }
-      }
-    }
-  }
-
-  /* Sum: '<Root>/Add' */
-  LabC_CompensatorOverRobot_B.Add = LabC_CompensatorOverRobot_B.FromWs_n[0] +
-    LabC_CompensatorOverRobot_B.FromWs_n[1];
-
-  /* FromWorkspace: '<S3>/FromWs' */
-  {
-    real_T *pDataValues = (real_T *)
-      LabC_CompensatorOverRobot_DWork.FromWs_PWORK_f.DataPtr;
-    real_T *pTimeValues = (real_T *)
-      LabC_CompensatorOverRobot_DWork.FromWs_PWORK_f.TimePtr;
-    int_T currTimeIndex =
-      LabC_CompensatorOverRobot_DWork.FromWs_IWORK_g.PrevIndex;
-    real_T t = LabC_CompensatorOverRobot_M->Timing.t[0];
-
-    /* Get index */
-    if (t <= pTimeValues[0]) {
-      currTimeIndex = 0;
-    } else if (t >= pTimeValues[5]) {
-      currTimeIndex = 4;
-    } else {
-      if (t < pTimeValues[currTimeIndex]) {
-        while (t < pTimeValues[currTimeIndex]) {
-          currTimeIndex--;
-        }
-      } else {
-        while (t >= pTimeValues[currTimeIndex + 1]) {
-          currTimeIndex++;
-        }
-      }
-    }
-
-    LabC_CompensatorOverRobot_DWork.FromWs_IWORK_g.PrevIndex = currTimeIndex;
-
-    /* Post output */
-    {
-      real_T t1 = pTimeValues[currTimeIndex];
-      real_T t2 = pTimeValues[currTimeIndex + 1];
-      if (t1 == t2) {
-        if (t < t1) {
-          {
-            int_T elIdx;
-            for (elIdx = 0; elIdx < 2; ++elIdx) {
-              (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] =
-                pDataValues[currTimeIndex];
-              pDataValues += 6;
-            }
-          }
-        } else {
-          {
-            int_T elIdx;
-            for (elIdx = 0; elIdx < 2; ++elIdx) {
-              (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] =
-                pDataValues[currTimeIndex + 1];
-              pDataValues += 6;
-            }
-          }
-        }
-      } else {
-        real_T f1 = (t2 - t) / (t2 - t1);
-        real_T f2 = 1.0 - f1;
-        real_T d1;
-        real_T d2;
-        int_T TimeIndex= currTimeIndex;
-
-        {
-          int_T elIdx;
-          for (elIdx = 0; elIdx < 2; ++elIdx) {
-            d1 = pDataValues[TimeIndex];
-            d2 = pDataValues[TimeIndex + 1];
-            (&LabC_CompensatorOverRobot_B.FromWs[0])[elIdx] = (real_T)
-              rtInterpolate(d1, d2, f1, f2);
-            pDataValues += 6;
-          }
-        }
+        d1 = pDataValues[TimeIndex];
+        d2 = pDataValues[TimeIndex + 1];
+        LabC_CompensatorOverRobot_B.FromWs = (real_T) rtInterpolate(d1, d2, f1,
+          f2);
+        pDataValues += 7;
       }
     }
   }
@@ -339,9 +241,9 @@ void LabC_CompensatorOverRobot_step(void)
       real_T t2 = pTimeValues[currTimeIndex + 1];
       if (t1 == t2) {
         if (t < t1) {
-          LabC_CompensatorOverRobot_B.FromWs_p = pDataValues[currTimeIndex];
+          LabC_CompensatorOverRobot_B.FromWs_m = pDataValues[currTimeIndex];
         } else {
-          LabC_CompensatorOverRobot_B.FromWs_p = pDataValues[currTimeIndex + 1];
+          LabC_CompensatorOverRobot_B.FromWs_m = pDataValues[currTimeIndex + 1];
         }
       } else {
         real_T f1 = (t2 - t) / (t2 - t1);
@@ -351,14 +253,14 @@ void LabC_CompensatorOverRobot_step(void)
         int_T TimeIndex= currTimeIndex;
         d1 = pDataValues[TimeIndex];
         d2 = pDataValues[TimeIndex + 1];
-        LabC_CompensatorOverRobot_B.FromWs_p = (real_T) rtInterpolate(d1, d2, f1,
+        LabC_CompensatorOverRobot_B.FromWs_m = (real_T) rtInterpolate(d1, d2, f1,
           f2);
         pDataValues += 6;
       }
     }
   }
 
-  /* FromWorkspace: '<S7>/FromWs' */
+  /* FromWorkspace: '<S6>/FromWs' */
   {
     real_T *pDataValues = (real_T *)
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK_a.DataPtr;
@@ -371,8 +273,8 @@ void LabC_CompensatorOverRobot_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[7]) {
-      currTimeIndex = 6;
+    } else if (t >= pTimeValues[5]) {
+      currTimeIndex = 4;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -408,26 +310,20 @@ void LabC_CompensatorOverRobot_step(void)
         d2 = pDataValues[TimeIndex + 1];
         LabC_CompensatorOverRobot_B.ManualSwitch1 = (real_T) rtInterpolate(d1,
           d2, f1, f2);
-        pDataValues += 8;
+        pDataValues += 6;
       }
     }
   }
 
   /* ManualSwitch: '<Root>/Manual Switch1' */
   if (LabC_CompensatorOverRobot_P.ManualSwitch1_CurrentSetting != 1) {
-    /* ManualSwitch: '<Root>/Manual Switch' incorporates:
-     *  ManualSwitch: '<Root>/Manual Switch2'
-     */
+    /* ManualSwitch: '<Root>/Manual Switch' */
     if (LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting == 1) {
       LabC_CompensatorOverRobot_B.ManualSwitch1 =
-        LabC_CompensatorOverRobot_B.FromWs[1];
-    } else if (LabC_CompensatorOverRobot_P.ManualSwitch2_CurrentSetting == 1) {
-      /* ManualSwitch: '<Root>/Manual Switch2' */
-      LabC_CompensatorOverRobot_B.ManualSwitch1 =
-        LabC_CompensatorOverRobot_B.Add;
+        LabC_CompensatorOverRobot_B.FromWs;
     } else {
       LabC_CompensatorOverRobot_B.ManualSwitch1 =
-        LabC_CompensatorOverRobot_B.FromWs_p;
+        LabC_CompensatorOverRobot_B.FromWs_m;
     }
 
     /* End of ManualSwitch: '<Root>/Manual Switch' */
@@ -435,69 +331,164 @@ void LabC_CompensatorOverRobot_step(void)
 
   /* End of ManualSwitch: '<Root>/Manual Switch1' */
 
-  /* Gain: '<S4>/Gain3' incorporates:
-   *  DataTypeConversion: '<S4>/Data Type Conversion'
+  /* DiscreteIntegrator: '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
+  LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr =
+    LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr;
+
+  /* MATLABSystem: '<S5>/Encoder' */
+  LabC_CompensatorOverRobot_B.rtb_Encoder_c = enc_output(1.0);
+
+  /* Gain: '<S4>/convert to meters' incorporates:
+   *  DataTypeConversion: '<S5>/Data Type  Conversion2'
+   *  Gain: '<S4>/convert to  radians'
+   *  MATLABSystem: '<S5>/Encoder'
+   */
+  LabC_CompensatorOverRobot_B.converttometers =
+    LabC_CompensatorOverRobot_P.converttoradians_Gain * (real32_T)
+    LabC_CompensatorOverRobot_B.rtb_Encoder_c *
+    LabC_CompensatorOverRobot_P.fWheelRadius;
+
+  /* Gain: '<S3>/Gain3' incorporates:
+   *  DataTypeConversion: '<S3>/Data Type Conversion'
    */
   LabC_CompensatorOverRobot_B.Gain3 = LabC_CompensatorOverRobot_P.Nxd *
     (real32_T)LabC_CompensatorOverRobot_B.ManualSwitch1;
 
-  /* MATLABSystem: '<S6>/Encoder' */
-  LabC_CompensatorOverRobot_B.rtb_Encoder_m = enc_output(1.0);
-
-  /* Gain: '<S5>/convert to meters' incorporates:
-   *  DataTypeConversion: '<S6>/Data Type  Conversion2'
-   *  Gain: '<S5>/convert to  radians'
-   *  MATLABSystem: '<S6>/Encoder'
+  /* SampleTimeMath: '<S8>/TSamp'
+   *
+   * About '<S8>/TSamp':
+   *  y = u * K where K = 1 / ( w * Ts )
    */
-  LabC_CompensatorOverRobot_B.converttometers =
-    LabC_CompensatorOverRobot_P.converttoradians_Gain * (real32_T)
-    LabC_CompensatorOverRobot_B.rtb_Encoder_m *
-    LabC_CompensatorOverRobot_P.fWheelRadius;
+  rtb_TSamp = LabC_CompensatorOverRobot_B.converttometers *
+    LabC_CompensatorOverRobot_P.TSamp_WtEt;
 
   /* SampleTimeMath: '<S9>/TSamp'
    *
    * About '<S9>/TSamp':
    *  y = u * K where K = 1 / ( w * Ts )
    */
-  rtb_TSamp = LabC_CompensatorOverRobot_B.converttometers *
-    LabC_CompensatorOverRobot_P.TSamp_WtEt;
-
-  /* DiscreteIntegrator: '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
-  LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr =
-    LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr;
-
-  /* SampleTimeMath: '<S10>/TSamp'
-   *
-   * About '<S10>/TSamp':
-   *  y = u * K where K = 1 / ( w * Ts )
-   */
   rtb_TSamp_n = LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr *
     LabC_CompensatorOverRobot_P.TSamp_WtEt_j;
 
-  /* DiscreteStateSpace: '<S11>/Internal_1_1' */
+  /* DiscreteStateSpace: '<S10>/Internal_1_1' */
   {
     rtb_Internal_4_4 = LabC_CompensatorOverRobot_P.Internal_1_1_C*
       LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE;
   }
 
-  /* DiscreteStateSpace: '<S11>/Internal_1_2' */
+  /* DiscreteStateSpace: '<S10>/Internal_1_2' */
   {
     rtb_Internal_3_3 = 0.0;
   }
 
-  /* DiscreteStateSpace: '<S11>/Internal_1_3' */
+  /* DiscreteStateSpace: '<S10>/Internal_1_3' */
   {
     rtb_Internal_3_2 = 0.0;
   }
 
-  /* DiscreteStateSpace: '<S11>/Internal_1_4' */
+  /* DiscreteStateSpace: '<S10>/Internal_1_4' */
   {
     rtb_DataTypeConversion1 = 0.0;
   }
 
-  /* Sum: '<S11>/Sum1' */
+  /* Sum: '<S10>/Sum1' */
   LabC_CompensatorOverRobot_B.Sum1 = ((rtb_Internal_4_4 + rtb_Internal_3_3) +
     rtb_Internal_3_2) + rtb_DataTypeConversion1;
+
+  /* DiscreteStateSpace: '<S10>/Internal_2_1' */
+  {
+    rtb_DataTypeConversion1 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_2_2' */
+  {
+    rtb_Internal_3_2 = LabC_CompensatorOverRobot_P.Internal_2_2_C*
+      LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_2_3' */
+  {
+    rtb_Internal_3_3 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_2_4' */
+  {
+    rtb_Internal_4_4 = 0.0;
+  }
+
+  /* Sum: '<S10>/Sum2' */
+  Sum2_tmp = ((rtb_DataTypeConversion1 + rtb_Internal_3_2) + rtb_Internal_3_3) +
+    rtb_Internal_4_4;
+
+  /* DiscreteStateSpace: '<S10>/Internal_3_1' */
+  {
+    rtb_DataTypeConversion1 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_3_2' */
+  {
+    rtb_Internal_3_2 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_3_3' */
+  {
+    rtb_Internal_3_3 = LabC_CompensatorOverRobot_P.Internal_3_3_C*
+      LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_3_4' */
+  {
+    rtb_Internal_4_4 = 0.0;
+  }
+
+  /* Sum: '<S10>/Sum3' */
+  LabC_CompensatorOverRobot_B.Sum3 = ((rtb_DataTypeConversion1 +
+    rtb_Internal_3_2) + rtb_Internal_3_3) + rtb_Internal_4_4;
+
+  /* DiscreteStateSpace: '<S10>/Internal_4_1' */
+  {
+    rtb_DataTypeConversion1 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_4_2' */
+  {
+    rtb_Internal_3_2 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_4_3' */
+  {
+    rtb_Internal_3_3 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S10>/Internal_4_4' */
+  {
+    rtb_Internal_4_4 = LabC_CompensatorOverRobot_P.Internal_4_4_C*
+      LabC_CompensatorOverRobot_DWork.Internal_4_4_DSTATE;
+  }
+
+  /* Sum: '<S10>/Sum4' */
+  tmp = ((rtb_DataTypeConversion1 + rtb_Internal_3_2) + rtb_Internal_3_3) +
+    rtb_Internal_4_4;
+
+  /* DiscreteStateSpace: '<S11>/Internal_1_1' */
+  {
+    rtb_DataTypeConversion1 = LabC_CompensatorOverRobot_P.Internal_1_1_C_i*
+      LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE_n;
+  }
+
+  /* DiscreteStateSpace: '<S11>/Internal_1_2' */
+  {
+    rtb_Internal_3_2 = 0.0;
+  }
+
+  /* DiscreteStateSpace: '<S11>/Internal_1_3' */
+  {
+    rtb_Internal_3_3 = 0.0;
+  }
+
+  /* Sum: '<S11>/Sum1' */
+  rtb_Add1_idx_0 = (rtb_DataTypeConversion1 + rtb_Internal_3_2) +
+    rtb_Internal_3_3;
 
   /* DiscreteStateSpace: '<S11>/Internal_2_1' */
   {
@@ -506,8 +497,8 @@ void LabC_CompensatorOverRobot_step(void)
 
   /* DiscreteStateSpace: '<S11>/Internal_2_2' */
   {
-    rtb_Internal_3_2 = LabC_CompensatorOverRobot_P.Internal_2_2_C*
-      LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE;
+    rtb_Internal_3_2 = LabC_CompensatorOverRobot_P.Internal_2_2_C_n*
+      LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE_o;
   }
 
   /* DiscreteStateSpace: '<S11>/Internal_2_3' */
@@ -515,14 +506,9 @@ void LabC_CompensatorOverRobot_step(void)
     rtb_Internal_3_3 = 0.0;
   }
 
-  /* DiscreteStateSpace: '<S11>/Internal_2_4' */
-  {
-    rtb_Internal_4_4 = 0.0;
-  }
-
   /* Sum: '<S11>/Sum2' */
-  Sum2_tmp = ((rtb_DataTypeConversion1 + rtb_Internal_3_2) + rtb_Internal_3_3) +
-    rtb_Internal_4_4;
+  rtb_Add1_idx_1 = (rtb_DataTypeConversion1 + rtb_Internal_3_2) +
+    rtb_Internal_3_3;
 
   /* DiscreteStateSpace: '<S11>/Internal_3_1' */
   {
@@ -536,105 +522,15 @@ void LabC_CompensatorOverRobot_step(void)
 
   /* DiscreteStateSpace: '<S11>/Internal_3_3' */
   {
-    rtb_Internal_3_3 = LabC_CompensatorOverRobot_P.Internal_3_3_C*
-      LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE;
-  }
-
-  /* DiscreteStateSpace: '<S11>/Internal_3_4' */
-  {
-    rtb_Internal_4_4 = 0.0;
-  }
-
-  /* Sum: '<S11>/Sum3' */
-  LabC_CompensatorOverRobot_B.Sum3 = ((rtb_DataTypeConversion1 +
-    rtb_Internal_3_2) + rtb_Internal_3_3) + rtb_Internal_4_4;
-
-  /* DiscreteStateSpace: '<S11>/Internal_4_1' */
-  {
-    rtb_DataTypeConversion1 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S11>/Internal_4_2' */
-  {
-    rtb_Internal_3_2 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S11>/Internal_4_3' */
-  {
-    rtb_Internal_3_3 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S11>/Internal_4_4' */
-  {
-    rtb_Internal_4_4 = LabC_CompensatorOverRobot_P.Internal_4_4_C*
-      LabC_CompensatorOverRobot_DWork.Internal_4_4_DSTATE;
-  }
-
-  /* Sum: '<S11>/Sum4' */
-  tmp = ((rtb_DataTypeConversion1 + rtb_Internal_3_2) + rtb_Internal_3_3) +
-    rtb_Internal_4_4;
-
-  /* DiscreteStateSpace: '<S12>/Internal_1_1' */
-  {
-    rtb_DataTypeConversion1 = LabC_CompensatorOverRobot_P.Internal_1_1_C_i*
-      LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE_n;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_1_2' */
-  {
-    rtb_Internal_3_2 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_1_3' */
-  {
-    rtb_Internal_3_3 = 0.0;
-  }
-
-  /* Sum: '<S12>/Sum1' */
-  rtb_Add1_idx_0 = (rtb_DataTypeConversion1 + rtb_Internal_3_2) +
-    rtb_Internal_3_3;
-
-  /* DiscreteStateSpace: '<S12>/Internal_2_1' */
-  {
-    rtb_DataTypeConversion1 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_2_2' */
-  {
-    rtb_Internal_3_2 = LabC_CompensatorOverRobot_P.Internal_2_2_C_n*
-      LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE_o;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_2_3' */
-  {
-    rtb_Internal_3_3 = 0.0;
-  }
-
-  /* Sum: '<S12>/Sum2' */
-  rtb_Add1_idx_1 = (rtb_DataTypeConversion1 + rtb_Internal_3_2) +
-    rtb_Internal_3_3;
-
-  /* DiscreteStateSpace: '<S12>/Internal_3_1' */
-  {
-    rtb_DataTypeConversion1 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_3_2' */
-  {
-    rtb_Internal_3_2 = 0.0;
-  }
-
-  /* DiscreteStateSpace: '<S12>/Internal_3_3' */
-  {
     rtb_Internal_3_3 = LabC_CompensatorOverRobot_P.Internal_3_3_C_i*
       LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE_o;
   }
 
-  /* Sum: '<S8>/Add1' incorporates:
-   *  Gain: '<S8>/Gain4'
-   *  Sum: '<S12>/Sum1'
-   *  Sum: '<S12>/Sum2'
-   *  Sum: '<S12>/Sum3'
+  /* Sum: '<S7>/Add1' incorporates:
+   *  Gain: '<S7>/Gain4'
+   *  Sum: '<S11>/Sum1'
+   *  Sum: '<S11>/Sum2'
+   *  Sum: '<S11>/Sum3'
    */
   rtb_Add1_idx_0 += LabC_CompensatorOverRobot_P.Md5[0] *
     LabC_CompensatorOverRobot_B.converttometers;
@@ -644,9 +540,9 @@ void LabC_CompensatorOverRobot_step(void)
                     rtb_Internal_3_3) + LabC_CompensatorOverRobot_P.Md5[2] *
     LabC_CompensatorOverRobot_B.converttometers;
 
-  /* Sum: '<S8>/Add2' incorporates:
-   *  Gain: '<S8>/Gain5'
-   *  Gain: '<S8>/Gain6'
+  /* Sum: '<S7>/Add2' incorporates:
+   *  Gain: '<S7>/Gain5'
+   *  Gain: '<S7>/Gain6'
    */
   for (i = 0; i < 4; i++) {
     LabC_CompensatorOverRobot_B.Add2[i] = ((LabC_CompensatorOverRobot_P.Md7[i +
@@ -656,16 +552,16 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_B.converttometers;
   }
 
-  /* End of Sum: '<S8>/Add2' */
+  /* End of Sum: '<S7>/Add2' */
 
-  /* ManualSwitch: '<S8>/Manual Switch1' incorporates:
-   *  ManualSwitch: '<S8>/Manual Switch'
-   *  Sum: '<S10>/Diff'
+  /* ManualSwitch: '<S7>/Manual Switch1' incorporates:
+   *  ManualSwitch: '<S7>/Manual Switch'
+   *  Sum: '<S8>/Diff'
    *  Sum: '<S9>/Diff'
-   *  UnitDelay: '<S10>/UD'
+   *  UnitDelay: '<S8>/UD'
    *  UnitDelay: '<S9>/UD'
    *
-   * Block description for '<S10>/Diff':
+   * Block description for '<S8>/Diff':
    *
    *  Add in CPU
    *
@@ -673,7 +569,7 @@ void LabC_CompensatorOverRobot_step(void)
    *
    *  Add in CPU
    *
-   * Block description for '<S10>/UD':
+   * Block description for '<S8>/UD':
    *
    *  Store in Global RAM
    *
@@ -690,9 +586,9 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr;
     rtb_Gain8_idx_3 = rtb_TSamp_n - LabC_CompensatorOverRobot_DWork.UD_DSTATE_o;
   } else if (LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting_e == 1) {
-    /* ManualSwitch: '<S8>/Manual Switch' incorporates:
-     *  Sum: '<S11>/Sum2'
-     *  Sum: '<S11>/Sum4'
+    /* ManualSwitch: '<S7>/Manual Switch' incorporates:
+     *  Sum: '<S10>/Sum2'
+     *  Sum: '<S10>/Sum4'
      */
     LabC_CompensatorOverRobot_B.rtb_Gain8_idx_0 =
       LabC_CompensatorOverRobot_B.Sum1;
@@ -710,15 +606,15 @@ void LabC_CompensatorOverRobot_step(void)
     rtb_Gain8_idx_3 = LabC_CompensatorOverRobot_B.Add2[3];
   }
 
-  /* End of ManualSwitch: '<S8>/Manual Switch1' */
+  /* End of ManualSwitch: '<S7>/Manual Switch1' */
 
-  /* Product: '<S4>/Product1' incorporates:
-   *  DataTypeConversion: '<S4>/Data Type Conversion'
-   *  Fcn: '<S4>/turn off the motor if the measured angle is greater than X degrees'
-   *  Gain: '<S4>/Gain4'
-   *  Gain: '<S4>/controller'
-   *  Sum: '<S4>/Sum'
-   *  Sum: '<S4>/Sum1'
+  /* Product: '<S3>/Product1' incorporates:
+   *  DataTypeConversion: '<S3>/Data Type Conversion'
+   *  Fcn: '<S3>/turn off the motor if the measured angle is greater than X degrees'
+   *  Gain: '<S3>/Gain4'
+   *  Gain: '<S3>/controller'
+   *  Sum: '<S3>/Sum'
+   *  Sum: '<S3>/Sum1'
    */
   LabC_CompensatorOverRobot_B.Product1 = (((((LabC_CompensatorOverRobot_B.Gain3
     + LabC_CompensatorOverRobot_B.rtb_Gain8_idx_0) *
@@ -732,16 +628,16 @@ void LabC_CompensatorOverRobot_step(void)
     LabC_CompensatorOverRobot_B.ManualSwitch1) * (real32_T)((real32_T)fabs
     (LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr) < 0.75F);
 
-  /* Sum: '<S8>/Add' incorporates:
-   *  Gain: '<S8>/Gain'
-   *  Gain: '<S8>/Gain1'
-   *  Gain: '<S8>/Gain2'
-   *  Gain: '<S8>/Gain3'
+  /* Sum: '<S7>/Add' incorporates:
+   *  Gain: '<S7>/Gain'
+   *  Gain: '<S7>/Gain1'
+   *  Gain: '<S7>/Gain2'
+   *  Gain: '<S7>/Gain3'
    */
   for (i = 0; i < 3; i++) {
-    LabC_CompensatorOverRobot_B.Add_n[i] = ((LabC_CompensatorOverRobot_P.Md1[i +
-      3] * rtb_Add1_idx_1 + LabC_CompensatorOverRobot_P.Md1[i] * rtb_Add1_idx_0)
-      + LabC_CompensatorOverRobot_P.Md1[i + 6] * rtb_Add1_idx_2) +
+    LabC_CompensatorOverRobot_B.Add[i] = ((LabC_CompensatorOverRobot_P.Md1[i + 3]
+      * rtb_Add1_idx_1 + LabC_CompensatorOverRobot_P.Md1[i] * rtb_Add1_idx_0) +
+      LabC_CompensatorOverRobot_P.Md1[i + 6] * rtb_Add1_idx_2) +
       ((LabC_CompensatorOverRobot_P.Md4[i] *
         LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr +
         LabC_CompensatorOverRobot_P.Md3[i] *
@@ -749,12 +645,12 @@ void LabC_CompensatorOverRobot_step(void)
        LabC_CompensatorOverRobot_P.Md2[i] * LabC_CompensatorOverRobot_B.Product1);
   }
 
-  /* End of Sum: '<S8>/Add' */
+  /* End of Sum: '<S7>/Add' */
 
-  /* Gain: '<S8>/Gain10' incorporates:
-   *  SignalConversion generated from: '<S8>/Gain10'
-   *  Sum: '<S11>/Sum2'
-   *  Sum: '<S11>/Sum4'
+  /* Gain: '<S7>/Gain10' incorporates:
+   *  SignalConversion generated from: '<S7>/Gain10'
+   *  Sum: '<S10>/Sum2'
+   *  Sum: '<S10>/Sum4'
    */
   for (i = 0; i < 2; i++) {
     LabC_CompensatorOverRobot_B.Gain3 = LabC_CompensatorOverRobot_P.Cd[i + 6] *
@@ -766,28 +662,28 @@ void LabC_CompensatorOverRobot_step(void)
     LabC_CompensatorOverRobot_B.Gain10[i] = LabC_CompensatorOverRobot_B.Gain3;
   }
 
-  /* End of Gain: '<S8>/Gain10' */
+  /* End of Gain: '<S7>/Gain10' */
 
-  /* Sum: '<S8>/Sum' */
+  /* Sum: '<S7>/Sum' */
   LabC_CompensatorOverRobot_B.Gain3 =
     LabC_CompensatorOverRobot_B.converttometers -
     LabC_CompensatorOverRobot_B.Gain10[0];
   rtb_Add1_idx_1 = LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr -
     LabC_CompensatorOverRobot_B.Gain10[1];
   for (i = 0; i < 4; i++) {
-    /* Gain: '<S8>/Gain7' incorporates:
-     *  SignalConversion generated from: '<S8>/Gain10'
-     *  Sum: '<S11>/Sum2'
-     *  Sum: '<S11>/Sum4'
+    /* Gain: '<S7>/Gain7' incorporates:
+     *  SignalConversion generated from: '<S7>/Gain10'
+     *  Sum: '<S10>/Sum2'
+     *  Sum: '<S10>/Sum4'
      */
     rtb_Add1_idx_0 = LabC_CompensatorOverRobot_P.Ad[i + 12] * tmp +
       (LabC_CompensatorOverRobot_P.Ad[i + 8] * LabC_CompensatorOverRobot_B.Sum3
        + (LabC_CompensatorOverRobot_P.Ad[i + 4] * Sum2_tmp +
           LabC_CompensatorOverRobot_P.Ad[i] * LabC_CompensatorOverRobot_B.Sum1));
 
-    /* Sum: '<S8>/Add3' incorporates:
-     *  Gain: '<S8>/Gain8'
-     *  Gain: '<S8>/Gain9'
+    /* Sum: '<S7>/Add3' incorporates:
+     *  Gain: '<S7>/Gain8'
+     *  Gain: '<S7>/Gain9'
      */
     LabC_CompensatorOverRobot_B.Add3[i] = (LabC_CompensatorOverRobot_P.Bd[i] *
       LabC_CompensatorOverRobot_B.Product1 + (LabC_CompensatorOverRobot_P.Ld[i +
@@ -795,35 +691,35 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_B.Gain3)) + rtb_Add1_idx_0;
   }
 
-  /* MATLABSystem: '<S6>/Gyroscope' */
+  /* MATLABSystem: '<S5>/Gyroscope' */
   MPU6050Gyro_Read(LabC_CompensatorOverRobot_B.out);
 
-  /* DataTypeConversion: '<S6>/Data Type  Conversion1' incorporates:
-   *  MATLABSystem: '<S6>/Gyroscope'
+  /* DataTypeConversion: '<S5>/Data Type  Conversion1' incorporates:
+   *  MATLABSystem: '<S5>/Gyroscope'
    */
   rtb_DataTypeConversion1 = LabC_CompensatorOverRobot_B.out[0];
 
-  /* Gain: '<S5>/convert to radians//sec' incorporates:
-   *  Constant: '<S5>/gyro bias'
-   *  Sum: '<S5>/Sum'
+  /* Gain: '<S4>/convert to radians//sec' incorporates:
+   *  Constant: '<S4>/gyro bias'
+   *  Sum: '<S4>/Sum'
    */
   rtb_converttoradianssec = (rtb_DataTypeConversion1 -
     LabC_CompensatorOverRobot_P.fGyroBias) *
     LabC_CompensatorOverRobot_P.converttoradianssec_Gain;
 
-  /* MATLABSystem: '<S42>/Digital Output1' incorporates:
-   *  Constant: '<S44>/Constant'
-   *  RelationalOperator: '<S44>/Compare'
+  /* MATLABSystem: '<S41>/Digital Output1' incorporates:
+   *  Constant: '<S43>/Constant'
+   *  RelationalOperator: '<S43>/Compare'
    */
   writeDigitalPin(8, (uint8_T)(LabC_CompensatorOverRobot_B.Product1 <
     LabC_CompensatorOverRobot_P.Constant_Value));
 
-  /* MATLABSystem: '<S42>/PWM' */
+  /* MATLABSystem: '<S41>/PWM' */
   obj = &LabC_CompensatorOverRobot_DWork.obj_o;
   obj->MW_PWM_HANDLE = MW_PWM_GetHandle
     (LabC_CompensatorOverRobot_DWork.obj_o.PinPWM);
 
-  /* Saturate: '<S42>/Saturation -Vsupply to Vsupply' */
+  /* Saturate: '<S41>/Saturation -Vsupply to Vsupply' */
   if (LabC_CompensatorOverRobot_B.Product1 >
       LabC_CompensatorOverRobot_P.M1V4LeftMotorDriverPWM6D8FST_Vs) {
     tmp = LabC_CompensatorOverRobot_P.M1V4LeftMotorDriverPWM6D8FST_Vs;
@@ -834,9 +730,9 @@ void LabC_CompensatorOverRobot_step(void)
     tmp = LabC_CompensatorOverRobot_B.Product1;
   }
 
-  /* End of Saturate: '<S42>/Saturation -Vsupply to Vsupply' */
+  /* End of Saturate: '<S41>/Saturation -Vsupply to Vsupply' */
 
-  /* Gain: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)' */
+  /* Gain: '<S41>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)' */
   tmp = (real32_T)floor
     (LabC_CompensatorOverRobot_P.conversiontodutycycleconverttou * tmp);
   if (rtIsNaNF(tmp) || rtIsInfF(tmp)) {
@@ -845,26 +741,26 @@ void LabC_CompensatorOverRobot_step(void)
     tmp = (real32_T)fmod(tmp, 256.0);
   }
 
-  /* MATLABSystem: '<S42>/PWM' incorporates:
-   *  Gain: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
+  /* MATLABSystem: '<S41>/PWM' incorporates:
+   *  Gain: '<S41>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
    */
   MW_PWM_SetDutyCycle(LabC_CompensatorOverRobot_DWork.obj_o.MW_PWM_HANDLE,
                       (uint8_T)(tmp < 0.0F ? (int16_T)(uint8_T)-(int8_T)(uint8_T)
     -tmp : (int16_T)(uint8_T)tmp));
 
-  /* MATLABSystem: '<S43>/Digital Output1' incorporates:
-   *  Constant: '<S45>/Constant'
-   *  RelationalOperator: '<S45>/Compare'
+  /* MATLABSystem: '<S42>/Digital Output1' incorporates:
+   *  Constant: '<S44>/Constant'
+   *  RelationalOperator: '<S44>/Compare'
    */
   writeDigitalPin(5, (uint8_T)(LabC_CompensatorOverRobot_B.Product1 <
     LabC_CompensatorOverRobot_P.Constant_Value_n));
 
-  /* MATLABSystem: '<S43>/PWM' */
+  /* MATLABSystem: '<S42>/PWM' */
   obj = &LabC_CompensatorOverRobot_DWork.obj;
   obj->MW_PWM_HANDLE = MW_PWM_GetHandle
     (LabC_CompensatorOverRobot_DWork.obj.PinPWM);
 
-  /* Saturate: '<S43>/Saturation -Vsupply to Vsupply' */
+  /* Saturate: '<S42>/Saturation -Vsupply to Vsupply' */
   if (LabC_CompensatorOverRobot_B.Product1 >
       LabC_CompensatorOverRobot_P.M1V4MiddleMotorDriverPWM2D5FST_) {
     tmp = LabC_CompensatorOverRobot_P.M1V4MiddleMotorDriverPWM2D5FST_;
@@ -875,9 +771,9 @@ void LabC_CompensatorOverRobot_step(void)
     tmp = LabC_CompensatorOverRobot_B.Product1;
   }
 
-  /* End of Saturate: '<S43>/Saturation -Vsupply to Vsupply' */
+  /* End of Saturate: '<S42>/Saturation -Vsupply to Vsupply' */
 
-  /* Gain: '<S43>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)' */
+  /* Gain: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)' */
   tmp = (real32_T)floor
     (LabC_CompensatorOverRobot_P.conversiontodutycycleconvertt_d * tmp);
   if (rtIsNaNF(tmp) || rtIsInfF(tmp)) {
@@ -886,12 +782,25 @@ void LabC_CompensatorOverRobot_step(void)
     tmp = (real32_T)fmod(tmp, 256.0);
   }
 
-  /* MATLABSystem: '<S43>/PWM' incorporates:
-   *  Gain: '<S43>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
+  /* MATLABSystem: '<S42>/PWM' incorporates:
+   *  Gain: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
    */
   MW_PWM_SetDutyCycle(LabC_CompensatorOverRobot_DWork.obj.MW_PWM_HANDLE,
                       (uint8_T)(tmp < 0.0F ? (int16_T)(uint8_T)-(int8_T)(uint8_T)
     -tmp : (int16_T)(uint8_T)tmp));
+
+  /* Update for DiscreteIntegrator: '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
+  LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr +=
+    LabC_CompensatorOverRobot_P.DiscreteTimeIntegratorconvertfr *
+    rtb_converttoradianssec;
+
+  /* Update for UnitDelay: '<S8>/UD'
+   *
+   * Block description for '<S8>/UD':
+   *
+   *  Store in Global RAM
+   */
+  LabC_CompensatorOverRobot_DWork.UD_DSTATE = rtb_TSamp;
 
   /* Update for UnitDelay: '<S9>/UD'
    *
@@ -899,22 +808,9 @@ void LabC_CompensatorOverRobot_step(void)
    *
    *  Store in Global RAM
    */
-  LabC_CompensatorOverRobot_DWork.UD_DSTATE = rtb_TSamp;
-
-  /* Update for DiscreteIntegrator: '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
-  LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr +=
-    LabC_CompensatorOverRobot_P.DiscreteTimeIntegratorconvertfr *
-    rtb_converttoradianssec;
-
-  /* Update for UnitDelay: '<S10>/UD'
-   *
-   * Block description for '<S10>/UD':
-   *
-   *  Store in Global RAM
-   */
   LabC_CompensatorOverRobot_DWork.UD_DSTATE_o = rtb_TSamp_n;
 
-  /* Update for DiscreteStateSpace: '<S11>/Internal_1_1' */
+  /* Update for DiscreteStateSpace: '<S10>/Internal_1_1' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE =
       LabC_CompensatorOverRobot_B.Add3[0] +
@@ -922,7 +818,7 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE;
   }
 
-  /* Update for DiscreteStateSpace: '<S11>/Internal_2_2' */
+  /* Update for DiscreteStateSpace: '<S10>/Internal_2_2' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE =
       LabC_CompensatorOverRobot_B.Add3[1] +
@@ -930,7 +826,7 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE;
   }
 
-  /* Update for DiscreteStateSpace: '<S11>/Internal_3_3' */
+  /* Update for DiscreteStateSpace: '<S10>/Internal_3_3' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE =
       LabC_CompensatorOverRobot_B.Add3[2] +
@@ -938,7 +834,7 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE;
   }
 
-  /* Update for DiscreteStateSpace: '<S11>/Internal_4_4' */
+  /* Update for DiscreteStateSpace: '<S10>/Internal_4_4' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_4_4_DSTATE =
       LabC_CompensatorOverRobot_B.Add3[3] +
@@ -946,26 +842,26 @@ void LabC_CompensatorOverRobot_step(void)
       LabC_CompensatorOverRobot_DWork.Internal_4_4_DSTATE;
   }
 
-  /* Update for DiscreteStateSpace: '<S12>/Internal_1_1' */
+  /* Update for DiscreteStateSpace: '<S11>/Internal_1_1' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE_n =
-      LabC_CompensatorOverRobot_B.Add_n[0] +
+      LabC_CompensatorOverRobot_B.Add[0] +
       (LabC_CompensatorOverRobot_P.Internal_1_1_A_e)*
       LabC_CompensatorOverRobot_DWork.Internal_1_1_DSTATE_n;
   }
 
-  /* Update for DiscreteStateSpace: '<S12>/Internal_2_2' */
+  /* Update for DiscreteStateSpace: '<S11>/Internal_2_2' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE_o =
-      LabC_CompensatorOverRobot_B.Add_n[1] +
+      LabC_CompensatorOverRobot_B.Add[1] +
       (LabC_CompensatorOverRobot_P.Internal_2_2_A_k)*
       LabC_CompensatorOverRobot_DWork.Internal_2_2_DSTATE_o;
   }
 
-  /* Update for DiscreteStateSpace: '<S12>/Internal_3_3' */
+  /* Update for DiscreteStateSpace: '<S11>/Internal_3_3' */
   {
     LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE_o =
-      LabC_CompensatorOverRobot_B.Add_n[2] +
+      LabC_CompensatorOverRobot_B.Add[2] +
       (LabC_CompensatorOverRobot_P.Internal_3_3_A_g)*
       LabC_CompensatorOverRobot_DWork.Internal_3_3_DSTATE_o;
   }
@@ -1051,15 +947,15 @@ void LabC_CompensatorOverRobot_initialize(void)
   LabC_CompensatorOverRobot_M->Timing.stepSize0 = 0.006;
 
   /* External mode info */
-  LabC_CompensatorOverRobot_M->Sizes.checksums[0] = (2256406322U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[1] = (2348432651U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[2] = (3336846878U);
-  LabC_CompensatorOverRobot_M->Sizes.checksums[3] = (4293065318U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[0] = (1098358726U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[1] = (1662181611U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[2] = (439561573U);
+  LabC_CompensatorOverRobot_M->Sizes.checksums[3] = (1464618110U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[10];
+    static const sysRanDType *systemRan[9];
     LabC_CompensatorOverRobot_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
@@ -1071,7 +967,6 @@ void LabC_CompensatorOverRobot_initialize(void)
     systemRan[6] = &rtAlwaysEnabled;
     systemRan[7] = &rtAlwaysEnabled;
     systemRan[8] = &rtAlwaysEnabled;
-    systemRan[9] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(LabC_CompensatorOverRobot_M->extModeInfo,
       &LabC_CompensatorOverRobot_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(LabC_CompensatorOverRobot_M->extModeInfo,
@@ -1110,12 +1005,10 @@ void LabC_CompensatorOverRobot_initialize(void)
 
     /* Start for FromWorkspace: '<S1>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 20.0, 20.0, 30.0, 30.0,
-        40.0, 40.0, 50.0, 50.0, 80.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 20.0, 20.0, 25.0, 40.0 }
+      ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.0, 0.0,
-        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 1.0, 1.0,
-        1.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 1.3, 1.3, 1.3, 1.3 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr = (void *)
         pTimeValues0;
@@ -1124,25 +1017,11 @@ void LabC_CompensatorOverRobot_initialize(void)
       LabC_CompensatorOverRobot_DWork.FromWs_IWORK.PrevIndex = 0;
     }
 
-    /* Start for FromWorkspace: '<S3>/FromWs' */
-    {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 20.0, 20.0, 30.0 } ;
-
-      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.0, 0.0,
-        0.0, 2.3, 2.3, 2.3 } ;
-
-      LabC_CompensatorOverRobot_DWork.FromWs_PWORK_f.TimePtr = (void *)
-        pTimeValues0;
-      LabC_CompensatorOverRobot_DWork.FromWs_PWORK_f.DataPtr = (void *)
-        pDataValues0;
-      LabC_CompensatorOverRobot_DWork.FromWs_IWORK_g.PrevIndex = 0;
-    }
-
     /* Start for FromWorkspace: '<S2>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 30.0, 30.0, 40.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 20.0, 20.0, 40.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 1.8, 1.8, 1.8 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 0.0, 0.5, 0.5, 0.5 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK_c.TimePtr = (void *)
         pTimeValues0;
@@ -1151,13 +1030,11 @@ void LabC_CompensatorOverRobot_initialize(void)
       LabC_CompensatorOverRobot_DWork.FromWs_IWORK_l.PrevIndex = 0;
     }
 
-    /* Start for FromWorkspace: '<S7>/FromWs' */
+    /* Start for FromWorkspace: '<S6>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 30.0, 30.0, 40.0, 40.0,
-        60.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 40.0, 40.0, 70.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 1.5, 1.5, 1.5, 1.5, 0.0
-      } ;
+      static real_T pDataValues0[] = { 0.0, -0.0, -0.0, 2.0, 2.0, 0.0 } ;
 
       LabC_CompensatorOverRobot_DWork.FromWs_PWORK_a.TimePtr = (void *)
         pTimeValues0;
@@ -1166,25 +1043,25 @@ void LabC_CompensatorOverRobot_initialize(void)
       LabC_CompensatorOverRobot_DWork.FromWs_IWORK_o.PrevIndex = 0;
     }
 
-    /* Start for MATLABSystem: '<S6>/Encoder' */
+    /* Start for MATLABSystem: '<S5>/Encoder' */
     LabC_CompensatorOverRobot_DWork.obj_g.matlabCodegenIsDeleted = false;
     LabC_CompensatorOverRobot_DWork.obj_g.isInitialized = 1L;
     enc_init(1.0, 19.0, 18.0);
     LabC_CompensatorOverRobot_DWork.obj_g.isSetupComplete = true;
 
-    /* Start for MATLABSystem: '<S6>/Gyroscope' */
+    /* Start for MATLABSystem: '<S5>/Gyroscope' */
     LabC_CompensatorOverRobot_DWork.obj_gi.matlabCodegenIsDeleted = false;
     LabC_CompensatorOverRobot_DWork.obj_gi.isInitialized = 1L;
     MPU6050Gyro_Init(0.0);
     LabC_CompensatorOverRobot_DWork.obj_gi.isSetupComplete = true;
 
-    /* Start for MATLABSystem: '<S42>/Digital Output1' */
+    /* Start for MATLABSystem: '<S41>/Digital Output1' */
     LabC_CompensatorOverRobot_DWork.obj_ow.matlabCodegenIsDeleted = false;
     LabC_CompensatorOverRobot_DWork.obj_ow.isInitialized = 1L;
     digitalIOSetup(8, 1);
     LabC_CompensatorOverRobot_DWork.obj_ow.isSetupComplete = true;
 
-    /* Start for MATLABSystem: '<S42>/PWM' */
+    /* Start for MATLABSystem: '<S41>/PWM' */
     LabC_CompensatorOverRobot_DWork.obj_o.matlabCodegenIsDeleted = true;
     LabC_CompensatorOverRobot_DWork.obj_o.isInitialized = 0L;
     LabC_CompensatorOverRobot_DWork.obj_o.matlabCodegenIsDeleted = false;
@@ -1200,13 +1077,13 @@ void LabC_CompensatorOverRobot_initialize(void)
     MW_PWM_Start(LabC_CompensatorOverRobot_DWork.obj_o.MW_PWM_HANDLE);
     LabC_CompensatorOverRobot_DWork.obj_o.isSetupComplete = true;
 
-    /* Start for MATLABSystem: '<S43>/Digital Output1' */
+    /* Start for MATLABSystem: '<S42>/Digital Output1' */
     LabC_CompensatorOverRobot_DWork.obj_c.matlabCodegenIsDeleted = false;
     LabC_CompensatorOverRobot_DWork.obj_c.isInitialized = 1L;
     digitalIOSetup(5, 1);
     LabC_CompensatorOverRobot_DWork.obj_c.isSetupComplete = true;
 
-    /* Start for MATLABSystem: '<S43>/PWM' */
+    /* Start for MATLABSystem: '<S42>/PWM' */
     LabC_CompensatorOverRobot_DWork.obj.matlabCodegenIsDeleted = true;
     LabC_CompensatorOverRobot_DWork.obj.isInitialized = 0L;
     LabC_CompensatorOverRobot_DWork.obj.matlabCodegenIsDeleted = false;
@@ -1222,22 +1099,22 @@ void LabC_CompensatorOverRobot_initialize(void)
     MW_PWM_Start(LabC_CompensatorOverRobot_DWork.obj.MW_PWM_HANDLE);
     LabC_CompensatorOverRobot_DWork.obj.isSetupComplete = true;
 
-    /* InitializeConditions for UnitDelay: '<S9>/UD'
+    /* InitializeConditions for DiscreteIntegrator: '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
+    LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr =
+      LabC_CompensatorOverRobot_P.DiscreteTimeIntegratorconvert_o;
+
+    /* InitializeConditions for UnitDelay: '<S8>/UD'
      *
-     * Block description for '<S9>/UD':
+     * Block description for '<S8>/UD':
      *
      *  Store in Global RAM
      */
     LabC_CompensatorOverRobot_DWork.UD_DSTATE =
       LabC_CompensatorOverRobot_P.DiscreteDerivative_ICPrevScaled;
 
-    /* InitializeConditions for DiscreteIntegrator: '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
-    LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr =
-      LabC_CompensatorOverRobot_P.DiscreteTimeIntegratorconvert_o;
-
-    /* InitializeConditions for UnitDelay: '<S10>/UD'
+    /* InitializeConditions for UnitDelay: '<S9>/UD'
      *
-     * Block description for '<S10>/UD':
+     * Block description for '<S9>/UD':
      *
      *  Store in Global RAM
      */
@@ -1249,22 +1126,22 @@ void LabC_CompensatorOverRobot_initialize(void)
 /* Model terminate function */
 void LabC_CompensatorOverRobot_terminate(void)
 {
-  /* Terminate for MATLABSystem: '<S6>/Encoder' */
+  /* Terminate for MATLABSystem: '<S5>/Encoder' */
   matlabCodegenHandle_matlabCod_o(&LabC_CompensatorOverRobot_DWork.obj_g);
 
-  /* Terminate for MATLABSystem: '<S6>/Gyroscope' */
+  /* Terminate for MATLABSystem: '<S5>/Gyroscope' */
   matlabCodegenHandle_matlabCodeg(&LabC_CompensatorOverRobot_DWork.obj_gi);
 
-  /* Terminate for MATLABSystem: '<S42>/Digital Output1' */
+  /* Terminate for MATLABSystem: '<S41>/Digital Output1' */
   matlabCodegenHandle_matlabC_o21(&LabC_CompensatorOverRobot_DWork.obj_ow);
 
-  /* Terminate for MATLABSystem: '<S42>/PWM' */
+  /* Terminate for MATLABSystem: '<S41>/PWM' */
   matlabCodegenHandle_matlabCo_o2(&LabC_CompensatorOverRobot_DWork.obj_o);
 
-  /* Terminate for MATLABSystem: '<S43>/Digital Output1' */
+  /* Terminate for MATLABSystem: '<S42>/Digital Output1' */
   matlabCodegenHandle_matlabC_o21(&LabC_CompensatorOverRobot_DWork.obj_c);
 
-  /* Terminate for MATLABSystem: '<S43>/PWM' */
+  /* Terminate for MATLABSystem: '<S42>/PWM' */
   matlabCodegenHandle_matlabCo_o2(&LabC_CompensatorOverRobot_DWork.obj);
 }
 

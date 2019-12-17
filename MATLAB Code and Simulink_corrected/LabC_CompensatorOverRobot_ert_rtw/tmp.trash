@@ -2,8 +2,8 @@
 avrdude: AVR device initialized and ready to accept instructions
 avrdude: Device signature = 0x1e9801 (probably m2560)
 avrdude: reading input file "../LabC_CompensatorOverRobot.hex"
-avrdude: writing flash (36346 bytes):
-avrdude: 36346 bytes of flash written
+avrdude: writing flash (35122 bytes):
+avrdude: 35122 bytes of flash written
 
 avrdude done.  Thank you.
 

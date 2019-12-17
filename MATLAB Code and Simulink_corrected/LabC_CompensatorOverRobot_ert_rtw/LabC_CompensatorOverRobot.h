@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.723
  * Simulink Coder version         : 9.2 (R2019b) 18-Jul-2019
- * C/C++ source code generated on : Sun Dec 15 13:24:53 2019
+ * C/C++ source code generated on : Sun Dec 15 20:31:55 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -89,45 +89,43 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T FromWs[2];                    /* '<S3>/FromWs' */
-  real_T FromWs_n[2];                  /* '<S1>/FromWs' */
-  real_T Add;                          /* '<Root>/Add' */
+  real_T FromWs;                       /* '<S1>/FromWs' */
+  real32_T Add2[4];                    /* '<S7>/Add2' */
   real_T ManualSwitch1;                /* '<Root>/Manual Switch1' */
-  real_T FromWs_p;                     /* '<S2>/FromWs' */
+  real_T FromWs_m;                     /* '<S2>/FromWs' */
   real32_T Gain10[2];
   int16_T out[3];
-  real32_T converttometers;            /* '<S5>/convert to meters' */
   real32_T DiscreteTimeIntegratorconvertfr;
-    /* '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
-  real32_T Sum1;                       /* '<S11>/Sum1' */
-  real32_T Sum3;                       /* '<S11>/Sum3' */
-  real32_T Add2[4];                    /* '<S8>/Add2' */
-  real32_T Product1;                   /* '<S4>/Product1' */
-  real32_T Add_n[3];                   /* '<S8>/Add' */
-  real32_T Add3[4];                    /* '<S8>/Add3' */
-  real32_T Gain3;                      /* '<S4>/Gain3' */
+    /* '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
+  real32_T converttometers;            /* '<S4>/convert to meters' */
+  real32_T Sum1;                       /* '<S10>/Sum1' */
+  real32_T Sum3;                       /* '<S10>/Sum3' */
+  real32_T Product1;                   /* '<S3>/Product1' */
+  real32_T Add[3];                     /* '<S7>/Add' */
+  real32_T Add3[4];                    /* '<S7>/Add3' */
+  real32_T Gain3;                      /* '<S3>/Gain3' */
   real32_T rtb_Gain8_idx_0;
   real32_T rtb_Gain8_idx_1;
   real32_T rtb_Gain8_idx_2;
-  int32_T rtb_Encoder_m;
+  int32_T rtb_Encoder_c;
 } BlockIO_LabC_CompensatorOverRob;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  codertarget_arduinobase_interna obj; /* '<S43>/PWM' */
-  codertarget_arduinobase_interna obj_o;/* '<S42>/PWM' */
-  e_codertarget_arduinobase_inter gobj_0;/* '<S43>/PWM' */
-  e_codertarget_arduinobase_inter gobj_1;/* '<S43>/PWM' */
-  e_codertarget_arduinobase_inter gobj_2;/* '<S43>/PWM' */
-  e_codertarget_arduinobase_inter gobj_3;/* '<S43>/PWM' */
-  e_codertarget_arduinobase_inter gobj_0_j;/* '<S42>/PWM' */
-  e_codertarget_arduinobase_inter gobj_1_a;/* '<S42>/PWM' */
-  e_codertarget_arduinobase_inter gobj_2_k;/* '<S42>/PWM' */
-  e_codertarget_arduinobase_inter gobj_3_d;/* '<S42>/PWM' */
-  Encoder_arduino_LabC_Compensato obj_g;/* '<S6>/Encoder' */
-  soMPU6050Gyro_LabC_CompensatorO obj_gi;/* '<S6>/Gyroscope' */
-  codertarget_arduinobase_blocks_ obj_c;/* '<S43>/Digital Output1' */
-  codertarget_arduinobase_blocks_ obj_ow;/* '<S42>/Digital Output1' */
+  codertarget_arduinobase_interna obj; /* '<S42>/PWM' */
+  codertarget_arduinobase_interna obj_o;/* '<S41>/PWM' */
+  e_codertarget_arduinobase_inter gobj_0;/* '<S42>/PWM' */
+  e_codertarget_arduinobase_inter gobj_1;/* '<S42>/PWM' */
+  e_codertarget_arduinobase_inter gobj_2;/* '<S42>/PWM' */
+  e_codertarget_arduinobase_inter gobj_3;/* '<S42>/PWM' */
+  e_codertarget_arduinobase_inter gobj_0_j;/* '<S41>/PWM' */
+  e_codertarget_arduinobase_inter gobj_1_a;/* '<S41>/PWM' */
+  e_codertarget_arduinobase_inter gobj_2_k;/* '<S41>/PWM' */
+  e_codertarget_arduinobase_inter gobj_3_d;/* '<S41>/PWM' */
+  Encoder_arduino_LabC_Compensato obj_g;/* '<S5>/Encoder' */
+  soMPU6050Gyro_LabC_CompensatorO obj_gi;/* '<S5>/Gyroscope' */
+  codertarget_arduinobase_blocks_ obj_c;/* '<S42>/Digital Output1' */
+  codertarget_arduinobase_blocks_ obj_ow;/* '<S41>/Digital Output1' */
   struct {
     void *TimePtr;
     void *DataPtr;
@@ -142,78 +140,80 @@ typedef struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWs_PWORK_f;                    /* '<S3>/FromWs' */
-
-  struct {
-    void *TimePtr;
-    void *DataPtr;
-    void *RSimInfoPtr;
   } FromWs_PWORK_c;                    /* '<S2>/FromWs' */
 
   struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWs_PWORK_a;                    /* '<S7>/FromWs' */
+  } FromWs_PWORK_a;                    /* '<S6>/FromWs' */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace_PWORK_i;               /* '<S3>/To Workspace' */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace1_PWORK;                /* '<S3>/To Workspace1' */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace2_PWORK;                /* '<S3>/To Workspace2' */
 
   struct {
     void *LoggedData[3];
-  } Measurements_PWORK;                /* '<S8>/   Measurements' */
+  } Measurements_PWORK;                /* '<S7>/   Measurements' */
 
   struct {
     void *LoggedData[3];
-  } FullObserver_PWORK;                /* '<S8>/Full Observer ' */
+  } FullObserver_PWORK;                /* '<S7>/Full Observer ' */
 
   struct {
     void *LoggedData[3];
-  } ReducedObserver_PWORK;             /* '<S8>/Reduced Observer ' */
+  } ReducedObserver_PWORK;             /* '<S7>/Reduced Observer ' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace_PWORK_n;               /* '<S8>/To Workspace' */
+  } ToWorkspace_PWORK_n;               /* '<S7>/To Workspace' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace1_PWORK;                /* '<S8>/To Workspace1' */
+  } ToWorkspace1_PWORK_m;              /* '<S7>/To Workspace1' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace2_PWORK;                /* '<S8>/To Workspace2' */
+  } ToWorkspace2_PWORK_b;              /* '<S7>/To Workspace2' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace3_PWORK;                /* '<S8>/To Workspace3' */
+  } ToWorkspace3_PWORK;                /* '<S7>/To Workspace3' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace4_PWORK;                /* '<S8>/To Workspace4' */
+  } ToWorkspace4_PWORK;                /* '<S7>/To Workspace4' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace5_PWORK;                /* '<S8>/To Workspace5' */
+  } ToWorkspace5_PWORK;                /* '<S7>/To Workspace5' */
 
   struct {
     void *LoggedData;
-  } ToWorkspace6_PWORK;                /* '<S8>/To Workspace6' */
+  } ToWorkspace6_PWORK;                /* '<S7>/To Workspace6' */
 
-  real32_T UD_DSTATE;                  /* '<S9>/UD' */
   real32_T DiscreteTimeIntegratorconvertfr;
-    /* '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
-  real32_T UD_DSTATE_o;                /* '<S10>/UD' */
-  real32_T Internal_1_1_DSTATE;        /* '<S11>/Internal_1_1' */
-  real32_T Internal_2_2_DSTATE;        /* '<S11>/Internal_2_2' */
-  real32_T Internal_3_3_DSTATE;        /* '<S11>/Internal_3_3' */
-  real32_T Internal_4_4_DSTATE;        /* '<S11>/Internal_4_4' */
-  real32_T Internal_1_1_DSTATE_n;      /* '<S12>/Internal_1_1' */
-  real32_T Internal_2_2_DSTATE_o;      /* '<S12>/Internal_2_2' */
-  real32_T Internal_3_3_DSTATE_o;      /* '<S12>/Internal_3_3' */
+    /* '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)' */
+  real32_T UD_DSTATE;                  /* '<S8>/UD' */
+  real32_T UD_DSTATE_o;                /* '<S9>/UD' */
+  real32_T Internal_1_1_DSTATE;        /* '<S10>/Internal_1_1' */
+  real32_T Internal_2_2_DSTATE;        /* '<S10>/Internal_2_2' */
+  real32_T Internal_3_3_DSTATE;        /* '<S10>/Internal_3_3' */
+  real32_T Internal_4_4_DSTATE;        /* '<S10>/Internal_4_4' */
+  real32_T Internal_1_1_DSTATE_n;      /* '<S11>/Internal_1_1' */
+  real32_T Internal_2_2_DSTATE_o;      /* '<S11>/Internal_2_2' */
+  real32_T Internal_3_3_DSTATE_o;      /* '<S11>/Internal_3_3' */
   struct {
     int_T PrevIndex;
   } FromWs_IWORK;                      /* '<S1>/FromWs' */
-
-  struct {
-    int_T PrevIndex;
-  } FromWs_IWORK_g;                    /* '<S3>/FromWs' */
 
   struct {
     int_T PrevIndex;
@@ -221,271 +221,267 @@ typedef struct {
 
   struct {
     int_T PrevIndex;
-  } FromWs_IWORK_o;                    /* '<S7>/FromWs' */
+  } FromWs_IWORK_o;                    /* '<S6>/FromWs' */
 } D_Work_LabC_CompensatorOverRobo;
 
 /* Parameters (default storage) */
 struct Parameters_LabC_CompensatorOver_ {
   real32_T Ad[16];                     /* Variable: Ad
-                                        * Referenced by: '<S8>/Gain7'
+                                        * Referenced by: '<S7>/Gain7'
                                         */
   real32_T Bd[4];                      /* Variable: Bd
-                                        * Referenced by: '<S8>/Gain8'
+                                        * Referenced by: '<S7>/Gain8'
                                         */
   real32_T Cd[8];                      /* Variable: Cd
-                                        * Referenced by: '<S8>/Gain10'
+                                        * Referenced by: '<S7>/Gain10'
                                         */
   real32_T Kd[4];                      /* Variable: Kd
-                                        * Referenced by: '<S4>/controller'
+                                        * Referenced by: '<S3>/controller'
                                         */
   real32_T Ld[8];                      /* Variable: Ld
-                                        * Referenced by: '<S8>/Gain9'
+                                        * Referenced by: '<S7>/Gain9'
                                         */
   real32_T Md1[9];                     /* Variable: Md1
-                                        * Referenced by: '<S8>/Gain'
+                                        * Referenced by: '<S7>/Gain'
                                         */
   real32_T Md2[3];                     /* Variable: Md2
-                                        * Referenced by: '<S8>/Gain1'
+                                        * Referenced by: '<S7>/Gain1'
                                         */
   real32_T Md3[3];                     /* Variable: Md3
-                                        * Referenced by: '<S8>/Gain2'
+                                        * Referenced by: '<S7>/Gain2'
                                         */
   real32_T Md4[3];                     /* Variable: Md4
-                                        * Referenced by: '<S8>/Gain3'
+                                        * Referenced by: '<S7>/Gain3'
                                         */
   real32_T Md5[3];                     /* Variable: Md5
-                                        * Referenced by: '<S8>/Gain4'
+                                        * Referenced by: '<S7>/Gain4'
                                         */
   real32_T Md6[4];                     /* Variable: Md6
-                                        * Referenced by: '<S8>/Gain5'
+                                        * Referenced by: '<S7>/Gain5'
                                         */
   real32_T Md7[12];                    /* Variable: Md7
-                                        * Referenced by: '<S8>/Gain6'
+                                        * Referenced by: '<S7>/Gain6'
                                         */
   real32_T Nxd;                        /* Variable: Nxd
-                                        * Referenced by: '<S4>/Gain3'
+                                        * Referenced by: '<S3>/Gain3'
                                         */
   real32_T fGyroBias;                  /* Variable: fGyroBias
-                                        * Referenced by: '<S5>/gyro bias'
+                                        * Referenced by: '<S4>/gyro bias'
                                         */
   real32_T fWheelRadius;               /* Variable: fWheelRadius
-                                        * Referenced by: '<S5>/convert to meters'
+                                        * Referenced by: '<S4>/convert to meters'
                                         */
   real32_T DiscreteDerivative_ICPrevScaled;
                               /* Mask Parameter: DiscreteDerivative_ICPrevScaled
-                               * Referenced by: '<S9>/UD'
+                               * Referenced by: '<S8>/UD'
                                */
   real32_T DiscreteDerivative_ICPrevScal_g;
                               /* Mask Parameter: DiscreteDerivative_ICPrevScal_g
-                               * Referenced by: '<S10>/UD'
+                               * Referenced by: '<S9>/UD'
                                */
   real32_T M1V4LeftMotorDriverPWM6D8FST_Vs;
                               /* Mask Parameter: M1V4LeftMotorDriverPWM6D8FST_Vs
-                               * Referenced by: '<S42>/Saturation -Vsupply to Vsupply'
+                               * Referenced by: '<S41>/Saturation -Vsupply to Vsupply'
                                */
   real32_T M1V4MiddleMotorDriverPWM2D5FST_;
                               /* Mask Parameter: M1V4MiddleMotorDriverPWM2D5FST_
-                               * Referenced by: '<S43>/Saturation -Vsupply to Vsupply'
+                               * Referenced by: '<S42>/Saturation -Vsupply to Vsupply'
                                */
   real32_T Constant_Value;             /* Computed Parameter: Constant_Value
-                                        * Referenced by: '<S44>/Constant'
+                                        * Referenced by: '<S43>/Constant'
                                         */
   real32_T Constant_Value_n;           /* Computed Parameter: Constant_Value_n
-                                        * Referenced by: '<S45>/Constant'
-                                        */
-  real32_T Gain4_Gain;                 /* Computed Parameter: Gain4_Gain
-                                        * Referenced by: '<S4>/Gain4'
-                                        */
-  real32_T converttoradians_Gain;   /* Computed Parameter: converttoradians_Gain
-                                     * Referenced by: '<S5>/convert to  radians'
-                                     */
-  real32_T TSamp_WtEt;                 /* Computed Parameter: TSamp_WtEt
-                                        * Referenced by: '<S9>/TSamp'
+                                        * Referenced by: '<S44>/Constant'
                                         */
   real32_T DiscreteTimeIntegratorconvertfr;
                           /* Computed Parameter: DiscreteTimeIntegratorconvertfr
-                           * Referenced by: '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
+                           * Referenced by: '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
                            */
   real32_T DiscreteTimeIntegratorconvert_o;
                           /* Computed Parameter: DiscreteTimeIntegratorconvert_o
-                           * Referenced by: '<S5>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
+                           * Referenced by: '<S4>/Discrete-Time  Integrator (convert from theta_b_dot to theta_b)'
                            */
+  real32_T converttoradians_Gain;   /* Computed Parameter: converttoradians_Gain
+                                     * Referenced by: '<S4>/convert to  radians'
+                                     */
+  real32_T Gain4_Gain;                 /* Computed Parameter: Gain4_Gain
+                                        * Referenced by: '<S3>/Gain4'
+                                        */
+  real32_T TSamp_WtEt;                 /* Computed Parameter: TSamp_WtEt
+                                        * Referenced by: '<S8>/TSamp'
+                                        */
   real32_T TSamp_WtEt_j;               /* Computed Parameter: TSamp_WtEt_j
-                                        * Referenced by: '<S10>/TSamp'
+                                        * Referenced by: '<S9>/TSamp'
                                         */
   real32_T Internal_1_1_A;             /* Computed Parameter: Internal_1_1_A
-                                        * Referenced by: '<S11>/Internal_1_1'
+                                        * Referenced by: '<S10>/Internal_1_1'
                                         */
   real32_T Internal_1_1_C;             /* Computed Parameter: Internal_1_1_C
-                                        * Referenced by: '<S11>/Internal_1_1'
+                                        * Referenced by: '<S10>/Internal_1_1'
                                         */
   real32_T Internal_1_1_InitialCondition;
                             /* Computed Parameter: Internal_1_1_InitialCondition
-                             * Referenced by: '<S11>/Internal_1_1'
+                             * Referenced by: '<S10>/Internal_1_1'
                              */
   real32_T Internal_1_2_InitialCondition;
                             /* Computed Parameter: Internal_1_2_InitialCondition
-                             * Referenced by: '<S11>/Internal_1_2'
+                             * Referenced by: '<S10>/Internal_1_2'
                              */
   real32_T Internal_1_3_InitialCondition;
                             /* Computed Parameter: Internal_1_3_InitialCondition
-                             * Referenced by: '<S11>/Internal_1_3'
+                             * Referenced by: '<S10>/Internal_1_3'
                              */
   real32_T Internal_1_4_InitialCondition;
                             /* Computed Parameter: Internal_1_4_InitialCondition
-                             * Referenced by: '<S11>/Internal_1_4'
+                             * Referenced by: '<S10>/Internal_1_4'
                              */
   real32_T Internal_2_1_InitialCondition;
                             /* Computed Parameter: Internal_2_1_InitialCondition
-                             * Referenced by: '<S11>/Internal_2_1'
+                             * Referenced by: '<S10>/Internal_2_1'
                              */
   real32_T Internal_2_2_A;             /* Computed Parameter: Internal_2_2_A
-                                        * Referenced by: '<S11>/Internal_2_2'
+                                        * Referenced by: '<S10>/Internal_2_2'
                                         */
   real32_T Internal_2_2_C;             /* Computed Parameter: Internal_2_2_C
-                                        * Referenced by: '<S11>/Internal_2_2'
+                                        * Referenced by: '<S10>/Internal_2_2'
                                         */
   real32_T Internal_2_2_InitialCondition;
                             /* Computed Parameter: Internal_2_2_InitialCondition
-                             * Referenced by: '<S11>/Internal_2_2'
+                             * Referenced by: '<S10>/Internal_2_2'
                              */
   real32_T Internal_2_3_InitialCondition;
                             /* Computed Parameter: Internal_2_3_InitialCondition
-                             * Referenced by: '<S11>/Internal_2_3'
+                             * Referenced by: '<S10>/Internal_2_3'
                              */
   real32_T Internal_2_4_InitialCondition;
                             /* Computed Parameter: Internal_2_4_InitialCondition
-                             * Referenced by: '<S11>/Internal_2_4'
+                             * Referenced by: '<S10>/Internal_2_4'
                              */
   real32_T Internal_3_1_InitialCondition;
                             /* Computed Parameter: Internal_3_1_InitialCondition
-                             * Referenced by: '<S11>/Internal_3_1'
+                             * Referenced by: '<S10>/Internal_3_1'
                              */
   real32_T Internal_3_2_InitialCondition;
                             /* Computed Parameter: Internal_3_2_InitialCondition
-                             * Referenced by: '<S11>/Internal_3_2'
+                             * Referenced by: '<S10>/Internal_3_2'
                              */
   real32_T Internal_3_3_A;             /* Computed Parameter: Internal_3_3_A
-                                        * Referenced by: '<S11>/Internal_3_3'
+                                        * Referenced by: '<S10>/Internal_3_3'
                                         */
   real32_T Internal_3_3_C;             /* Computed Parameter: Internal_3_3_C
-                                        * Referenced by: '<S11>/Internal_3_3'
+                                        * Referenced by: '<S10>/Internal_3_3'
                                         */
   real32_T Internal_3_3_InitialCondition;
                             /* Computed Parameter: Internal_3_3_InitialCondition
-                             * Referenced by: '<S11>/Internal_3_3'
+                             * Referenced by: '<S10>/Internal_3_3'
                              */
   real32_T Internal_3_4_InitialCondition;
                             /* Computed Parameter: Internal_3_4_InitialCondition
-                             * Referenced by: '<S11>/Internal_3_4'
+                             * Referenced by: '<S10>/Internal_3_4'
                              */
   real32_T Internal_4_1_InitialCondition;
                             /* Computed Parameter: Internal_4_1_InitialCondition
-                             * Referenced by: '<S11>/Internal_4_1'
+                             * Referenced by: '<S10>/Internal_4_1'
                              */
   real32_T Internal_4_2_InitialCondition;
                             /* Computed Parameter: Internal_4_2_InitialCondition
-                             * Referenced by: '<S11>/Internal_4_2'
+                             * Referenced by: '<S10>/Internal_4_2'
                              */
   real32_T Internal_4_3_InitialCondition;
                             /* Computed Parameter: Internal_4_3_InitialCondition
-                             * Referenced by: '<S11>/Internal_4_3'
+                             * Referenced by: '<S10>/Internal_4_3'
                              */
   real32_T Internal_4_4_A;             /* Computed Parameter: Internal_4_4_A
-                                        * Referenced by: '<S11>/Internal_4_4'
+                                        * Referenced by: '<S10>/Internal_4_4'
                                         */
   real32_T Internal_4_4_C;             /* Computed Parameter: Internal_4_4_C
-                                        * Referenced by: '<S11>/Internal_4_4'
+                                        * Referenced by: '<S10>/Internal_4_4'
                                         */
   real32_T Internal_4_4_InitialCondition;
                             /* Computed Parameter: Internal_4_4_InitialCondition
-                             * Referenced by: '<S11>/Internal_4_4'
+                             * Referenced by: '<S10>/Internal_4_4'
                              */
   real32_T Internal_1_1_A_e;           /* Computed Parameter: Internal_1_1_A_e
-                                        * Referenced by: '<S12>/Internal_1_1'
+                                        * Referenced by: '<S11>/Internal_1_1'
                                         */
   real32_T Internal_1_1_C_i;           /* Computed Parameter: Internal_1_1_C_i
-                                        * Referenced by: '<S12>/Internal_1_1'
+                                        * Referenced by: '<S11>/Internal_1_1'
                                         */
   real32_T Internal_1_1_InitialCondition_j;
                           /* Computed Parameter: Internal_1_1_InitialCondition_j
-                           * Referenced by: '<S12>/Internal_1_1'
+                           * Referenced by: '<S11>/Internal_1_1'
                            */
   real32_T Internal_1_2_InitialCondition_o;
                           /* Computed Parameter: Internal_1_2_InitialCondition_o
-                           * Referenced by: '<S12>/Internal_1_2'
+                           * Referenced by: '<S11>/Internal_1_2'
                            */
   real32_T Internal_1_3_InitialCondition_o;
                           /* Computed Parameter: Internal_1_3_InitialCondition_o
-                           * Referenced by: '<S12>/Internal_1_3'
+                           * Referenced by: '<S11>/Internal_1_3'
                            */
   real32_T Internal_2_1_InitialCondition_h;
                           /* Computed Parameter: Internal_2_1_InitialCondition_h
-                           * Referenced by: '<S12>/Internal_2_1'
+                           * Referenced by: '<S11>/Internal_2_1'
                            */
   real32_T Internal_2_2_A_k;           /* Computed Parameter: Internal_2_2_A_k
-                                        * Referenced by: '<S12>/Internal_2_2'
+                                        * Referenced by: '<S11>/Internal_2_2'
                                         */
   real32_T Internal_2_2_C_n;           /* Computed Parameter: Internal_2_2_C_n
-                                        * Referenced by: '<S12>/Internal_2_2'
+                                        * Referenced by: '<S11>/Internal_2_2'
                                         */
   real32_T Internal_2_2_InitialCondition_f;
                           /* Computed Parameter: Internal_2_2_InitialCondition_f
-                           * Referenced by: '<S12>/Internal_2_2'
+                           * Referenced by: '<S11>/Internal_2_2'
                            */
   real32_T Internal_2_3_InitialCondition_d;
                           /* Computed Parameter: Internal_2_3_InitialCondition_d
-                           * Referenced by: '<S12>/Internal_2_3'
+                           * Referenced by: '<S11>/Internal_2_3'
                            */
   real32_T Internal_3_1_InitialCondition_a;
                           /* Computed Parameter: Internal_3_1_InitialCondition_a
-                           * Referenced by: '<S12>/Internal_3_1'
+                           * Referenced by: '<S11>/Internal_3_1'
                            */
   real32_T Internal_3_2_InitialCondition_i;
                           /* Computed Parameter: Internal_3_2_InitialCondition_i
-                           * Referenced by: '<S12>/Internal_3_2'
+                           * Referenced by: '<S11>/Internal_3_2'
                            */
   real32_T Internal_3_3_A_g;           /* Computed Parameter: Internal_3_3_A_g
-                                        * Referenced by: '<S12>/Internal_3_3'
+                                        * Referenced by: '<S11>/Internal_3_3'
                                         */
   real32_T Internal_3_3_C_i;           /* Computed Parameter: Internal_3_3_C_i
-                                        * Referenced by: '<S12>/Internal_3_3'
+                                        * Referenced by: '<S11>/Internal_3_3'
                                         */
   real32_T Internal_3_3_InitialCondition_e;
                           /* Computed Parameter: Internal_3_3_InitialCondition_e
-                           * Referenced by: '<S12>/Internal_3_3'
+                           * Referenced by: '<S11>/Internal_3_3'
                            */
   real32_T converttoradianssec_Gain;
                                  /* Computed Parameter: converttoradianssec_Gain
-                                  * Referenced by: '<S5>/convert to radians//sec'
+                                  * Referenced by: '<S4>/convert to radians//sec'
                                   */
   real32_T SaturationVsupplytoVsupply_Lowe;
                           /* Computed Parameter: SaturationVsupplytoVsupply_Lowe
-                           * Referenced by: '<S42>/Saturation -Vsupply to Vsupply'
+                           * Referenced by: '<S41>/Saturation -Vsupply to Vsupply'
                            */
   real32_T conversiontodutycycleconverttou;
                           /* Computed Parameter: conversiontodutycycleconverttou
-                           * Referenced by: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
+                           * Referenced by: '<S41>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
                            */
   real32_T SaturationVsupplytoVsupply_Lo_g;
                           /* Computed Parameter: SaturationVsupplytoVsupply_Lo_g
-                           * Referenced by: '<S43>/Saturation -Vsupply to Vsupply'
+                           * Referenced by: '<S42>/Saturation -Vsupply to Vsupply'
                            */
   real32_T conversiontodutycycleconvertt_d;
                           /* Computed Parameter: conversiontodutycycleconvertt_d
-                           * Referenced by: '<S43>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
+                           * Referenced by: '<S42>/conversion to dutycycle (convert to uint8, overflow will provide reverse polairty magnitued)'
                            */
-  uint8_T ManualSwitch2_CurrentSetting;
-                             /* Computed Parameter: ManualSwitch2_CurrentSetting
-                              * Referenced by: '<Root>/Manual Switch2'
-                              */
   uint8_T ManualSwitch_CurrentSetting;
                               /* Computed Parameter: ManualSwitch_CurrentSetting
                                * Referenced by: '<Root>/Manual Switch'
                                */
   uint8_T ManualSwitch_CurrentSetting_e;
                             /* Computed Parameter: ManualSwitch_CurrentSetting_e
-                             * Referenced by: '<S8>/Manual Switch'
+                             * Referenced by: '<S7>/Manual Switch'
                              */
   uint8_T ManualSwitch1_CurrentSetting;
                              /* Computed Parameter: ManualSwitch1_CurrentSetting
@@ -493,7 +489,7 @@ struct Parameters_LabC_CompensatorOver_ {
                               */
   uint8_T ManualSwitch1_CurrentSetting_g;
                            /* Computed Parameter: ManualSwitch1_CurrentSetting_g
-                            * Referenced by: '<S8>/Manual Switch1'
+                            * Referenced by: '<S7>/Manual Switch1'
                             */
 };
 
@@ -559,8 +555,8 @@ extern RT_MODEL_LabC_CompensatorOverRo *const LabC_CompensatorOverRobot_M;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S8>/Data Type Duplicate' : Unused code path elimination
  * Block '<S9>/Data Type Duplicate' : Unused code path elimination
- * Block '<S10>/Data Type Duplicate' : Unused code path elimination
  */
 
 /*-
@@ -580,49 +576,48 @@ extern RT_MODEL_LabC_CompensatorOverRo *const LabC_CompensatorOverRobot_M;
  * '<Root>' : 'LabC_CompensatorOverRobot'
  * '<S1>'   : 'LabC_CompensatorOverRobot/Signal Builder'
  * '<S2>'   : 'LabC_CompensatorOverRobot/Signal Builder1'
- * '<S3>'   : 'LabC_CompensatorOverRobot/Signal Builder2'
- * '<S4>'   : 'LabC_CompensatorOverRobot/controller'
- * '<S5>'   : 'LabC_CompensatorOverRobot/measurement filter'
- * '<S6>'   : 'LabC_CompensatorOverRobot/plant'
- * '<S7>'   : 'LabC_CompensatorOverRobot/reference'
- * '<S8>'   : 'LabC_CompensatorOverRobot/controller/observer'
- * '<S9>'   : 'LabC_CompensatorOverRobot/controller/observer/Discrete Derivative'
- * '<S10>'  : 'LabC_CompensatorOverRobot/controller/observer/Discrete Derivative '
- * '<S11>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System'
- * '<S12>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator'
- * '<S13>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_1'
- * '<S14>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_2'
- * '<S15>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_3'
- * '<S16>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_4'
- * '<S17>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_1'
- * '<S18>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_2'
- * '<S19>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_3'
- * '<S20>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_4'
- * '<S21>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_1'
- * '<S22>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_2'
- * '<S23>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_3'
- * '<S24>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_4'
- * '<S25>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_1'
- * '<S26>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_2'
- * '<S27>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_3'
- * '<S28>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_4'
- * '<S29>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/Input Delay'
- * '<S30>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/Output Delay'
- * '<S31>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_1'
- * '<S32>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_2'
- * '<S33>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_3'
- * '<S34>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_1'
- * '<S35>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_2'
- * '<S36>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_3'
- * '<S37>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_1'
- * '<S38>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_2'
- * '<S39>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_3'
- * '<S40>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/Input Delay'
- * '<S41>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/Output Delay'
- * '<S42>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Left Motor Driver PWM6, D8 FST'
- * '<S43>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Middle Motor Driver PWM2, D5 FST'
- * '<S44>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Left Motor Driver PWM6, D8 FST/Compare To Zero'
- * '<S45>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Middle Motor Driver PWM2, D5 FST/Compare To Zero'
+ * '<S3>'   : 'LabC_CompensatorOverRobot/controller'
+ * '<S4>'   : 'LabC_CompensatorOverRobot/measurement filter'
+ * '<S5>'   : 'LabC_CompensatorOverRobot/plant'
+ * '<S6>'   : 'LabC_CompensatorOverRobot/reference'
+ * '<S7>'   : 'LabC_CompensatorOverRobot/controller/observer'
+ * '<S8>'   : 'LabC_CompensatorOverRobot/controller/observer/Discrete Derivative'
+ * '<S9>'   : 'LabC_CompensatorOverRobot/controller/observer/Discrete Derivative '
+ * '<S10>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System'
+ * '<S11>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator'
+ * '<S12>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_1'
+ * '<S13>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_2'
+ * '<S14>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_3'
+ * '<S15>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_1_4'
+ * '<S16>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_1'
+ * '<S17>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_2'
+ * '<S18>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_3'
+ * '<S19>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_2_4'
+ * '<S20>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_1'
+ * '<S21>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_2'
+ * '<S22>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_3'
+ * '<S23>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_3_4'
+ * '<S24>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_1'
+ * '<S25>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_2'
+ * '<S26>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_3'
+ * '<S27>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/IO Delay_4_4'
+ * '<S28>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/Input Delay'
+ * '<S29>'  : 'LabC_CompensatorOverRobot/controller/observer/LTI System/Output Delay'
+ * '<S30>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_1'
+ * '<S31>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_2'
+ * '<S32>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_1_3'
+ * '<S33>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_1'
+ * '<S34>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_2'
+ * '<S35>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_2_3'
+ * '<S36>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_1'
+ * '<S37>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_2'
+ * '<S38>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/IO Delay_3_3'
+ * '<S39>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/Input Delay'
+ * '<S40>'  : 'LabC_CompensatorOverRobot/controller/observer/integrator/Output Delay'
+ * '<S41>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Left Motor Driver PWM6, D8 FST'
+ * '<S42>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Middle Motor Driver PWM2, D5 FST'
+ * '<S43>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Left Motor Driver PWM6, D8 FST/Compare To Zero'
+ * '<S44>'  : 'LabC_CompensatorOverRobot/plant/M1V4 Middle Motor Driver PWM2, D5 FST/Compare To Zero'
  */
 #endif                             /* RTW_HEADER_LabC_CompensatorOverRobot_h_ */
 

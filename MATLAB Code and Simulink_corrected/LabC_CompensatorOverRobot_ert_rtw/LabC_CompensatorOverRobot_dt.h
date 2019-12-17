@@ -9,7 +9,7 @@
  *
  * Model version              : 1.723
  * Simulink Coder version : 9.2 (R2019b) 18-Jul-2019
- * C source code generated on : Sun Dec 15 13:24:53 2019
+ * C source code generated on : Sun Dec 15 20:31:55 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Atmel->AVR
@@ -67,9 +67,12 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&LabC_CompensatorOverRobot_B.Add), 0, 0, 1 },
+  { (char_T *)(&LabC_CompensatorOverRobot_B.FromWs), 0, 0, 1 },
 
-  { (char_T *)(&LabC_CompensatorOverRobot_B.converttometers), 1, 0, 16 }
+  { (char_T *)(&LabC_CompensatorOverRobot_B.Add2[0]), 1, 0, 4 },
+
+  { (char_T *)(&LabC_CompensatorOverRobot_B.DiscreteTimeIntegratorconvertfr), 1,
+    0, 12 }
   ,
 
   { (char_T *)(&LabC_CompensatorOverRobot_DWork.obj), 17, 0, 2 },
@@ -82,18 +85,19 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&LabC_CompensatorOverRobot_DWork.obj_c), 16, 0, 2 },
 
-  { (char_T *)(&LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr), 11, 0, 21
+  { (char_T *)(&LabC_CompensatorOverRobot_DWork.FromWs_PWORK.TimePtr), 11, 0, 23
   },
 
-  { (char_T *)(&LabC_CompensatorOverRobot_DWork.UD_DSTATE), 1, 0, 10 },
+  { (char_T *)(&LabC_CompensatorOverRobot_DWork.DiscreteTimeIntegratorconvertfr),
+    1, 0, 10 },
 
   { (char_T *)(&LabC_CompensatorOverRobot_DWork.FromWs_IWORK.PrevIndex), 10, 0,
-    4 }
+    3 }
 };
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  10U,
+  11U,
   rtBTransitions
 };
 
@@ -101,8 +105,8 @@ static DataTypeTransitionTable rtBTransTable = {
 static DataTypeTransition rtPTransitions[] = {
   { (char_T *)(&LabC_CompensatorOverRobot_P.Ad[0]), 1, 0, 136 },
 
-  { (char_T *)(&LabC_CompensatorOverRobot_P.ManualSwitch2_CurrentSetting), 3, 0,
-    5 }
+  { (char_T *)(&LabC_CompensatorOverRobot_P.ManualSwitch_CurrentSetting), 3, 0,
+    4 }
 };
 
 /* data type transition table for Parameters structure */
