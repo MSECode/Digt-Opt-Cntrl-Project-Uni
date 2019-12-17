@@ -21,7 +21,14 @@ The project was divided into three main parts:
 ### Laboratory A
 
 In order to obtain the Equations of Motion (EOM) the static and dynamic analysis was perormed using the model of the robot shown below.
-![Model of the robot ](/images/image_4_readme/model_robot.png = 20x100)
+![Model of the robot ](/images/image_4_readme/model_robot.png)
+Moreover, the electronic circuit was based on the model displayed below.
+![Model of the robot ](/images/image_4_readme/model_circuit.png)
+Therefore, the equations of motion obtained from the defined models were linearized in order to get the linear time-invariant (LTI) state-space (SS) system.
+
+After that, a PID controller was designed using the pole placement method. Furthermore, the system was tested in Simulink adding a signal in input to simulated an external distrurbance.
+
+At the end, the closed-loop system was simulated in Simulink in order to find the maximal value of the disturbance, for which the robot will follow.
 
 ### Laboratory B
 
